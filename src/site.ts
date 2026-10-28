@@ -18,8 +18,6 @@ export const SOCIAL = [
   { label: 'Email', href: 'mailto:syedusmankaleem@live.com' },
   { label: 'GitHub', href: 'https://github.com/syed-usman' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/syed-usman-kaleem/' },
-  { label: 'Facebook', href: 'https://www.facebook.com/usmanshah01' },
-  { label: 'Instagram', href: 'https://www.instagram.com/syedusmankaleem/' },
 ];
 
 export type Post = CollectionEntry<'posts'>;
