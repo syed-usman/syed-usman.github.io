@@ -6,15 +6,42 @@ const posts = await getPosts();
 ---
 
 <Base>
-  <h1 class="visually-hidden">Posts</h1>
+  <section class="intro prose">
+    <h1>Infrastructure engineer. Evidence first, everything as code.</h1>
+    <p>
+      I've spent a decade building and running cloud platforms, from industrial IoT fleets to e-learning platforms
+      on Kubernetes. I debug production-scale problems from the evidence up, turn the fix into code and runbooks,
+      and build guardrails so AI agents can work safely on real infrastructure.
+    </p>
+    <ul class="highlights">
+      <li>
+        <strong>200/200</strong> concurrent users on a JupyterHub platform, up from 15–23% failed logins, after
+        tracing the cause to load-balancer churn from node autoscaling
+      </li>
+      <li>
+        <strong>900+ lifts</strong> monitored in production by Franz, an IoT platform whose team I led from zero to
+        MVP in under six months
+      </li>
+      <li>
+        <strong>Default-deny</strong> tool access for a Claude Code pipeline that reads untrusted tickets, with
+        humans approving every merge
+      </li>
+    </ul>
+    <p>
+      Senior DevOps/Infrastructure Engineer at Multiverse, previously Tech Lead at Relayr. More in
+      <a href="/work/">My Work</a> and <a href="/about/">About</a>.
+    </p>
+  </section>
+
+  <h2 class="section-title">Writing</h2>
   <ol class="post-list">
     {
       posts.map((post) => (
         <li>
           <article>
-            <h2>
+            <h3>
               <a href={postUrl(post)}>{post.data.title}</a>
-            </h2>
+            </h3>
             <time class="post-date" datetime={post.data.date.toISOString().slice(0, 10)}>
               {formatDate(post.data.date)}
             </time>

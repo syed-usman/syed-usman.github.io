@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/Page.astro
 title: My Work
-description: "Experience of Syed Usman: DevOps, cloud infrastructure, Kubernetes and IoT platform engineering in Berlin."
+description: "Experience of Syed Usman: Kubernetes, cloud infrastructure, reliability and AI-agent guardrails, plus IoT platform leadership."
 ---
 
 ## Experience
@@ -13,13 +13,12 @@ description: "Experience of Syed Usman: DevOps, cloud infrastructure, Kubernetes
 Aug. 2024 – Present · Berlin\
 StackFuel was acquired by Multiverse in 2025.
 
-- **AI Agent Looping Harness & Platform:** Built a looping harness that runs Claude autonomously against DevOps tasks, iterating tool calls until completion without manual intervention. Also deployed a company-wide AI experimentation platform with Helm, enabling employees to try generative AI and learn prompt engineering.
-- **AI Agent Identity, Access & Sandboxing:** Designed a dedicated, least-privilege identity for Claude: short-lived OIDC-federated credentials, network allow-listing, and full audit logging, scoped read-only. Ran it unattended in Docker sandboxes to investigate and resolve infrastructure issues, isolated from production.
-- **JupyterHub Migration:** Moved Coding Labs infrastructure from manual servers to JupyterHub on Hetzner Cloud using Terraform and Ansible. Standardized infrastructure as code and improved observability for German school students.
-- **Data Warehouse Migration:** Rebuilt the analytics stack from an old on-premise server to Hetzner Cloud. Used Terraform and Ansible to migrate Airflow, Metabase, and all data for better reliability and easier maintenance.
-- **Kubernetes Cluster Automation:** Set up automated Kubernetes clusters for the StackFuel e-learning platform. Migrated JupyterHub workloads to autoscaling clusters in Hetzner and Scaleway. Used Terraform and GitLab CI/CD for GitOps. Integrated Keycloak for secure access.
-- **Monitoring and Alerting:** Standardized monitoring and alerting across all infrastructure using New Relic. Automated agent deployment with Ansible and alert policies with Terraform. Routed alerts to Slack for faster incident response.
-- **Ansible Codebase Modernization:** Split a large, complex Ansible codebase into modular roles and separate repos. Removed shared conditional logic and added GitLab CI for automated deployments. Improved transparency and consistency.
+- **Scaling a learner platform to 200 concurrent users:** A load test of JupyterHub on Kubernetes (Scaleway Kapsule) stalled at ~170 of 200 users, with 15–23% of logins failing below the application layer. Over ten instrumented runs (Locust, tcpdump, py-spy) I ruled out the hub, auth, ingress, kernel and client, and traced the failures to node autoscaling repeatedly reconfiguring the load balancer's backends. Excluding the autoscaling pool from the load balancer and lifting the hub's spawn limit took it to 200/200 servers with zero login or spawn failures, reproduced on a second run and codified in Terraform and Helm.
+- **Backup and recovery for learner data:** Built Kubernetes volume backups with Velero and Kopia (90-day retention), a restore runbook for single-file to full-environment recovery, and a script that computes the minimal restore chain across volumes. Ran recovery drills for the platform's two main databases.
+- **Kubernetes platform and identity as code:** Upgraded clusters across three environments to Kubernetes 1.35. Built the new learner stack on managed Kubernetes, with the Keycloak realm (clients, roles, auth flows) managed in Terraform and tested against an empty instance, and moved DNS from manual registrar records to Terraform.
+- **Sandboxed automation platform:** Deployed n8n to three environments with Ansible and Keycloak SSO. Isolated its AI assistant in sysbox-runc sandboxes sized from runner memory limits, removed the privileged fallback, and hardened code execution (decision recorded as an ADR).
+- **AI-assisted delivery pipeline:** Co-built a Claude Code pipeline that takes a Jira ticket to a merge request: competing planners, test-first implementation, a fleet of review subagents and two human approval gates. Designed its default-deny tool-access hook (an allow-list only skips prompts, it doesn't block the rest) and treated ticket text as untrusted input. Also deployed a company-wide AI experimentation platform with Helm.
+- **Earlier at StackFuel:** Moved Coding Labs from manual servers to JupyterHub on Hetzner Cloud and the analytics stack (Airflow, Metabase) off an on-premise server, using Terraform and Ansible. Standardized monitoring on New Relic (agents via Ansible, alert policies via Terraform), split a monolithic Ansible codebase into modular roles with GitLab CI, and rolled out Renovate and lock-file standards across repositories.
 
 ### Jillion
 
