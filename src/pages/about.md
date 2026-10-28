@@ -7,7 +7,7 @@ description: "About Syed Usman, Senior DevOps and Infrastructure Engineer in Ber
 Email: [syedusmankaleem@live.com](mailto:syedusmankaleem@live.com)\
 Berlin, DE
 
-I'm an infrastructure engineer with a decade of experience in distributed systems, Python and cloud platforms. I debug production-scale problems from the evidence up, turn the fix into code and runbooks, and build guardrails so AI agents can work safely on real infrastructure. I currently work as a Senior DevOps/Infrastructure Engineer at [Multiverse](https://www.multiverse.io) (formerly StackFuel). Before that I was Tech Lead at Relayr, leading cross-functional teams that shipped IoT platforms to production.
+I'm an infrastructure engineer with a decade of experience in distributed systems, Python and cloud platforms. I debug production-scale problems from the evidence up, turn the fix into code and runbooks, and build guardrails so AI agents can work safely on real infrastructure. I currently work as a Senior DevOps/Infrastructure Engineer at [Multiverse](https://www.multiverse.io) (formerly StackFuel). Before that I was Tech Lead at Relayr, leading a cross-functional team of 6–10 engineers that shipped IoT platforms to production.
 
 ## How I work
 
@@ -15,7 +15,7 @@ I'm an infrastructure engineer with a decade of experience in distributed system
 - **Codify, don't patch.** A live fix isn't done until it's in Terraform, Helm or Ansible. Manual changes get reverted by the next deploy.
 - **Recovery you can actually run.** A backup counts once someone has restored from it. I write runbooks and run the drills.
 - **Short docs that explain why.** Runbooks, ADRs and known-issues pages that record the reasoning, not just the steps.
-- **Guardrails for AI agents.** Default-deny tool access, untrusted input treated as untrusted, and humans approving what gets merged.
+- **Guardrails for AI agents.** Least-privilege identities with short-lived credentials, sandboxed execution, default-deny tool access, and untrusted input treated as untrusted.
 
 ## What I work with
 
@@ -25,7 +25,7 @@ I'm an infrastructure engineer with a decade of experience in distributed system
 - **CI/CD:** GitLab CI, GitHub Actions, Atlantis
 - **Observability & SRE:** Prometheus, Grafana, New Relic, OpenTelemetry, Datadog, load testing (Locust), backup & recovery
 - **Identity & Security:** Keycloak, sandboxed execution (sysbox), secrets management
-- **AI Tooling:** Claude Code pipelines (skills, subagents, hooks), agent tool-access guardrails
+- **AI Tooling:** Claude Code pipelines (skills, subagents, hooks), least-privilege agent identity (OIDC), sandboxed agent execution
 - **Backend:** Python, PostgreSQL, Redis, Kafka
 
 ## Languages
