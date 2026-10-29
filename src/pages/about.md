@@ -3,14 +3,14 @@ layout: ../layouts/Page.astro
 title: About
 eyebrow: About
 lead: "I’m Syed, an infrastructure engineer in Berlin. I like the problems that only show up in production, and I like making sure they only show up once."
-description: "About Syed Usman, an infrastructure engineer and former tech lead in Berlin: background, how he works, and how to get in touch."
+description: "About Syed Usman, an infrastructure engineer and former Solutions Architect in Berlin: background, how he works, and how to get in touch."
 ---
 
 ## The short version
 
 I studied software engineering at NUST in Islamabad, graduated as a gold medallist in 2015, and started my career at YotaScale, working between Palo Alto and Lahore on a pipeline that dug through AWS bills to find waste. It was my first lesson that infrastructure is mostly about paying attention to what's actually happening, not what the diagram says.
 
-In 2017 I moved to Berlin. After a year at Colormass moving a Django monolith onto Kubernetes, I joined Relayr and spent five years in industrial IoT, first as a solutions engineer and then as tech lead of a cross-functional team of 6–10 engineers. Hardware is a strict teacher. A bad deploy to a cloud service costs you an hour, but a bad deploy to a gateway bolted inside an elevator shaft costs you a site visit. I learned a lot about vendors, over-the-air updates and debugging a mess of wires at midnight, and I [wrote some of it down](/2021-06-11/iot-mistakes/).
+In 2017 I moved to Berlin. After a year at Colormass moving a Django monolith onto Kubernetes, I joined Relayr and spent five years in industrial IoT, growing from solutions engineer to senior solutions engineer to solutions architect. As an architect I was also the tech lead of a cross-functional team of 6–10 engineers, without the title. Hardware is a strict teacher. A bad deploy to a cloud service costs you an hour, but a bad deploy to a gateway bolted inside an elevator shaft costs you a site visit. I learned a lot about vendors, over-the-air updates and debugging a mess of wires at midnight.
 
 Since then I've built AWS platforms at Jillion, and today I'm a Senior DevOps/Infrastructure Engineer at [Multiverse](https://www.multiverse.io) (I joined StackFuel, which Multiverse acquired in 2025), running the Kubernetes platform behind hands-on courses for 10,000+ learners. The full history is on [my work page](/work/).
 

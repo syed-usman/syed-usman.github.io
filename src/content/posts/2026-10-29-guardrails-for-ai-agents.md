@@ -23,11 +23,11 @@ If you've designed access for a CI system, none of this is new. That's the right
 
 Unattended runs happen in Docker sandboxes, isolated from production. The agent can dig into a problem and try things there without production being in reach.
 
-Elsewhere, an automation tool's built-in AI assistant needed to execute code. We isolated it in sysbox-runc sandboxes and removed the privileged fallback, because a sandbox with a "run privileged if this fails" escape hatch is a sandbox in name only.
+The same goes for any tool whose AI assistant can execute code: isolate it in a proper sandbox and remove any privileged fallback, because a sandbox with a "run privileged if this fails" escape hatch is a sandbox in name only.
 
 ## The misunderstanding: allow-lists don't block anything
 
-I also co-built a Claude Code pipeline that takes a Jira ticket to a merge request: competing planners, test-first implementation, review subagents and two human approval gates.
+A common next step is a Claude Code pipeline that takes a ticket to a merge request, with planning, test-first implementation, review subagents and human approval gates.
 
 When we started, the obvious guardrail was a tool allow-list. But in Claude Code, an allow-list only means "don't ask me before running these". It doesn't block anything that isn't on it; it just asks. And a person approving prompts all day eventually stops reading them.
 
@@ -35,7 +35,7 @@ So I wrote a **default-deny tool-access hook**: anything not explicitly permitte
 
 ## Treat what the agent reads as untrusted
 
-The pipeline reads ticket text, and anyone who can file a ticket can write instructions in it. We treat that text as untrusted input, the same way you'd treat a form field in a web app: data to act on, never instructions to follow.
+A pipeline like that reads ticket text, and anyone who can file a ticket can write instructions in it. Treat that text as untrusted input, the same way you'd treat a form field in a web app: data to act on, never instructions to follow.
 
 ## What I'd tell the next person
 

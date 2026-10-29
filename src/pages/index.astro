@@ -8,10 +8,10 @@ import { SITE, getPosts } from '../site';
 const posts = await getPosts();
 
 const numbers = [
-  { value: '200/200', label: 'learners served in the final load test, up from 15–23% failed logins' },
+  { value: '200/200', label: 'users served in the final load test, up from 15–23% failed logins' },
   { value: '30%+', label: 'lower infrastructure cost after moving a 10,000+ learner platform to autoscaling Kubernetes' },
   { value: '900+', label: 'lifts monitored by Franz, an IoT platform my team took from zero to MVP in under six months' },
-  { value: '1–4 h', label: 'measured restore time in recovery drills for the platform’s main databases' },
+  { value: '6–10', label: 'engineers in the cross-functional team I led as tech lead' },
 ];
 
 const cases = [
@@ -28,9 +28,9 @@ const cases = [
   {
     tag: 'Recovery',
     title: 'Backups someone has actually restored',
-    problem: 'Learner data lives on Kubernetes volumes, and a backup nobody has restored from is only a hope.',
-    work: 'Velero and Kopia volume backups with 90-day retention, a restore runbook from single file to full environment, and a script that works out the minimal restore chain.',
-    result: 'Recovery drills on the two main databases, with a measured restore time of 1–4 hours.',
+    problem: 'User data lives on Kubernetes volumes, and a backup nobody has restored from is only a hope.',
+    work: 'Volume backups, a restore runbook from single file to full environment, and a script that works out the minimal restore chain.',
+    result: 'Timed recovery drills on the main databases, so “how long until it’s back?” has a measured answer.',
     href: '/2026-10-29/a-backup-counts-once-restored/',
     cta: 'Read the write-up',
   },
@@ -38,18 +38,18 @@ const cases = [
     tag: 'AI guardrails',
     title: 'Letting an AI agent near production, safely',
     problem: 'We wanted Claude to investigate infrastructure issues on its own, without handing it a human’s keys.',
-    work: 'A dedicated least-privilege identity with short-lived OIDC credentials, network allow-listing and full audit logs, running unattended in sandboxes. A default-deny tool hook for our ticket-to-merge-request pipeline.',
-    result: 'An agent that investigates on its own, scoped read-only and isolated from production, with every action in the audit log.',
+    work: 'A dedicated least-privilege identity with short-lived credentials and audit logs, sandboxed runs, and default-deny tool access instead of an allow-list.',
+    result: 'An agent that investigates on its own without anyone’s keys, with every action attributable to it.',
     href: '/2026-10-29/guardrails-for-ai-agents/',
     cta: 'Read the write-up',
   },
   {
-    tag: 'Leadership',
+    tag: 'IoT',
     title: 'Franz: from zero to 900+ lifts',
     problem: 'An elevator-monitoring product needed hardware, firmware, edge software and cloud, built by one team at once.',
-    work: 'Led a cross-functional team across frontend, backend, firmware and embedded Linux; built the edge layer and an over-the-air update system myself.',
+    work: 'Worked with a cross-functional team across frontend, backend, firmware and embedded Linux; built the edge layer and an over-the-air update system myself.',
     result: 'A working MVP in under six months. The platform now monitors 900+ lifts in production.',
-    href: '/work/#relayr',
+    href: '/work/#relayr-senior',
     cta: 'More in my work',
   },
 ];
