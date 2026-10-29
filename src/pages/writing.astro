@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import { getPosts } from '../site';
+
+const posts = await getPosts();
+---
+
+<Base title="Writing" description="Notes from production by Syed Usman: debugging, Kubernetes, IoT, recovery and AI-agent guardrails.">
+  <div class="wrap narrow">
+    <header class="page-header">
+      <p class="eyebrow">Writing</p>
+      <h1>Notes from production</h1>
+      <p class="lead">
+        Long-form write-ups of problems I’ve worked on: what broke, how we found out, and what I’d tell the next person.
+        Subscribe with the <a href="/atom.xml">Atom feed</a>.
+      </p>
+    </header>
+    <PostList posts={posts} />
+  </div>
+</Base>

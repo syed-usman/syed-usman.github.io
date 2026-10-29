@@ -1,7 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import { render } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import { formatDate, getPosts, postSlug, postUrl, type Post } from '../site';
+import portrait from '../assets/display-picture.jpg';
+import { SITE, formatDate, getPosts, postSlug, postUrl, readingTime, type Post } from '../site';
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -22,33 +24,49 @@ const { Content } = await render(post);
 ---
 
 <Base title={post.data.title} description={post.data.description} article={{ published: post.data.date }}>
-  <article class="post prose">
-    <header>
+  <article class="wrap narrow post">
+    <header class="page-header">
+      <p class="eyebrow">
+        <time datetime={post.data.date.toISOString().slice(0, 10)}>{formatDate(post.data.date)}</time>
+        <span aria-hidden="true"> · </span>{readingTime(post)}
+      </p>
       <h1>{post.data.title}</h1>
-      <time class="post-date" datetime={post.data.date.toISOString().slice(0, 10)}>{formatDate(post.data.date)}</time>
-      {post.data.draft && <p class="draft-badge">Draft: not published</p>}
+      {post.data.description && <p class="lead">{post.data.description}</p>}
+      {post.data.draft && <p class="draft-banner">Draft: only visible in local development.</p>}
     </header>
-    <Content />
-  </article>
+    <div class="prose">
+      <Content />
+    </div>
 
-  {
-    (newer || older) && (
-      <nav class="pager" aria-label="More posts">
-        {older ? (
-          <a class="pager-older" href={postUrl(older)}>
-            <span>Older</span>
-            {older.data.title}
-          </a>
-        ) : (
-          <span />
-        )}
-        {newer && (
-          <a class="pager-newer" href={postUrl(newer)}>
-            <span>Newer</span>
-            {newer.data.title}
-          </a>
-        )}
-      </nav>
-    )
-  }
+    <aside class="author-card">
+      <Image src={portrait} alt="" width={128} height={128} fit="cover" position="top" />
+      <p>
+        <strong>I’m Syed</strong>, an infrastructure engineer in Berlin. I work on Kubernetes platforms, reliability and
+        guardrails for AI agents. If this was useful, or you think I got something wrong, <a href={`mailto:${SITE.email}`}
+          >email me</a
+        >.
+      </p>
+    </aside>
+
+    {
+      (newer || older) && (
+        <nav class="pager" aria-label="More posts">
+          {older ? (
+            <a href={postUrl(older)}>
+              <span>Older</span>
+              {older.data.title}
+            </a>
+          ) : (
+            <span />
+          )}
+          {newer && (
+            <a class="pager-newer" href={postUrl(newer)}>
+              <span>Newer</span>
+              {newer.data.title}
+            </a>
+          )}
+        </nav>
+      )
+    }
+  </article>
 </Base>

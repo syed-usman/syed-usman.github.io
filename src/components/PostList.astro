@@ -1,0 +1,27 @@
+---
+import { postUrl, readingTime, shortDate, type Post } from '../site';
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+---
+
+<ol class="post-list">
+  {
+    posts.map((post) => (
+      <li>
+        <a href={postUrl(post)}>
+          <time datetime={post.data.date.toISOString().slice(0, 10)}>{shortDate(post.data.date)}</time>
+          <span class="post-list-title">
+            {post.data.title}
+            {post.data.draft && <em class="draft-badge">draft</em>}
+          </span>
+          {post.data.description && <span class="post-list-desc">{post.data.description}</span>}
+          <span class="post-list-meta">{readingTime(post)}</span>
+        </a>
+      </li>
+    ))
+  }
+</ol>

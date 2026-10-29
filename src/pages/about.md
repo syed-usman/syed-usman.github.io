@@ -1,41 +1,36 @@
 ---
 layout: ../layouts/Page.astro
 title: About
-description: "About Syed Usman, Senior DevOps and Infrastructure Engineer in Berlin, DE."
+eyebrow: About
+lead: "I’m Syed, an infrastructure engineer in Berlin. I like the problems that only show up in production, and I like making sure they only show up once."
+description: "About Syed Usman, an infrastructure engineer and former tech lead in Berlin: background, how he works, and how to get in touch."
 ---
 
-Email: [syedusmankaleem@live.com](mailto:syedusmankaleem@live.com)\
-Berlin, DE
+## The short version
 
-I'm an infrastructure engineer with a decade of experience in distributed systems, Python and cloud platforms. I debug production-scale problems from the evidence up, turn the fix into code and runbooks, and build guardrails so AI agents can work safely on real infrastructure. I currently work as a Senior DevOps/Infrastructure Engineer at [Multiverse](https://www.multiverse.io) (formerly StackFuel). Before that I was Tech Lead at Relayr, leading a cross-functional team of 6–10 engineers that shipped IoT platforms to production.
+I studied software engineering at NUST in Islamabad, graduated as a gold medallist in 2015, and started my career at YotaScale, working between Palo Alto and Lahore on a pipeline that dug through AWS bills to find waste. It was my first lesson that infrastructure is mostly about paying attention to what's actually happening, not what the diagram says.
+
+In 2017 I moved to Berlin. After a year at Colormass moving a Django monolith onto Kubernetes, I joined Relayr and spent five years in industrial IoT, first as a solutions engineer and then as tech lead of a cross-functional team of 6–10 engineers. Hardware is a strict teacher. A bad deploy to a cloud service costs you an hour, but a bad deploy to a gateway bolted inside an elevator shaft costs you a site visit. I learned a lot about vendors, over-the-air updates and debugging a mess of wires at midnight, and I [wrote some of it down](/2021-06-11/iot-mistakes/).
+
+Since then I've built AWS platforms at Jillion, and today I'm a Senior DevOps/Infrastructure Engineer at [Multiverse](https://www.multiverse.io) (I joined StackFuel, which Multiverse acquired in 2025), running the Kubernetes platform behind hands-on courses for 10,000+ learners. The full history is on [my work page](/work/).
 
 ## How I work
 
-- **Evidence first.** When something breaks, I instrument every layer and rule causes out one by one, and I write down what was ruled out, including my own wrong guesses, so the next person doesn't repeat them.
-- **Codify, don't patch.** A live fix isn't done until it's in Terraform, Helm or Ansible. Manual changes get reverted by the next deploy.
-- **Recovery you can actually run.** A backup counts once someone has restored from it. I write runbooks and run the drills.
-- **Short docs that explain why.** Runbooks, ADRs and known-issues pages that record the reasoning, not just the steps.
-- **Guardrails for AI agents.** Least-privilege identities with short-lived credentials, sandboxed execution, default-deny tool access, and untrusted input treated as untrusted.
+- **Evidence first.** When something breaks, I instrument every layer and rule causes out one at a time. I write down what was ruled out, including my own wrong guesses, so nobody repeats them.
+- **Codify, don't patch.** A live fix isn't done until it's in Terraform, Helm or Ansible. A manual change gets reverted by the next deploy, usually at the worst time.
+- **Recovery you can actually run.** A backup counts once someone has restored from it. I write the runbook and then run the drill.
+- **Short docs that explain why.** Runbooks, ADRs and known-issues pages that record the reasoning as well as the steps.
+- **Guardrails for AI agents.** Agents get their own least-privilege identity, short-lived credentials, a sandbox and default-deny tool access. Anything they read from a ticket or a web page is untrusted input.
+- **Leading means unblocking.** As a tech lead I hired, ran 1:1s, planned with clients and ran incidents. Most of the job was making it easy for the team to ship.
 
-## What I work with
+## The work I enjoy most
 
-- **Cloud Infrastructure:** AWS, Azure, Hetzner, Scaleway, IONOS
-- **Kubernetes & Containerization:** Kubernetes (managed and self-run), Helm, Docker, Traefik, Velero
-- **IaC & Automation:** Terraform, Ansible, GitOps, Renovate
-- **CI/CD:** GitLab CI, GitHub Actions, Atlantis
-- **Observability & SRE:** Prometheus, Grafana, New Relic, OpenTelemetry, Datadog, load testing (Locust), backup & recovery
-- **Identity & Security:** Keycloak, sandboxed execution (sysbox), secrets management
-- **AI Tooling:** Claude Code pipelines (skills, subagents, hooks), least-privilege agent identity (OIDC), sandboxed agent execution
-- **Backend:** Python, PostgreSQL, Redis, Kafka
+Reliability problems that cross layers, platforms that other teams depend on, and teams that care about writing things down. I'm happiest somewhere between hands-on engineering and helping a team decide what to build next, whether that's as a lead or staff engineer or as an engineering manager who still reads the dashboards.
 
-## Languages
+## Languages and certification
 
-I speak English natively and know some German (B1 level & improving).
+I speak English natively and German at B1, improving slowly. I earned the AWS Solutions Architect – Associate certification in 2018, though most of what I know came from production.
 
-## Education & certification
+## Get in touch
 
-- **National University of Science & Technology**, Islamabad (2011 – 2015)\
-  Bachelor’s in Software Engineering; Gold Medallist
-- **AWS Certified Solutions Architect – Associate** (2018)
-
-See [My Work](/work/) for my full experience.
+The best way to reach me is email: [syedusmankaleem@live.com](mailto:syedusmankaleem@live.com). I'm also on [LinkedIn](https://www.linkedin.com/in/syed-usman-kaleem/) and [GitHub](https://github.com/syed-usman).

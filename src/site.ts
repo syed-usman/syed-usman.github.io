@@ -2,22 +2,24 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 
 export const SITE = {
   title: 'Syed Usman',
-  tagline: 'DevOps & Infrastructure Engineer',
-  description: 'Senior DevOps/Infrastructure Engineer in Berlin, DE',
+  tagline: 'Infrastructure engineer in Berlin',
+  description:
+    'Syed Usman is an infrastructure engineer in Berlin. Notes on Kubernetes, reliability, platform teams and running AI agents safely on real infrastructure.',
   author: 'Syed Usman',
+  email: 'syedusmankaleem@live.com',
   locale: 'en',
 };
 
 export const NAV = [
-  { href: '/', label: 'Home' },
+  { href: '/writing/', label: 'Writing' },
+  { href: '/work/', label: 'Work' },
   { href: '/about/', label: 'About' },
-  { href: '/work/', label: 'My Work' },
 ];
 
 export const SOCIAL = [
-  { label: 'Email', href: 'mailto:syedusmankaleem@live.com' },
   { label: 'GitHub', href: 'https://github.com/syed-usman' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/syed-usman-kaleem/' },
+  { label: 'Atom feed', href: '/atom.xml' },
 ];
 
 export type Post = CollectionEntry<'posts'>;
@@ -39,4 +41,13 @@ export function postUrl(post: Post): string {
 
 export function formatDate(date: Date): string {
   return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+}
+
+export function shortDate(date: Date): string {
+  return date.toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+}
+
+export function readingTime(post: Post): string {
+  const words = (post.body ?? '').split(/\s+/).filter(Boolean).length;
+  return `${Math.max(1, Math.round(words / 230))} min read`;
 }

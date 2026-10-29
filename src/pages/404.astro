@@ -3,11 +3,14 @@ import Base from '../layouts/Base.astro';
 ---
 
 <Base title="Page not found">
-  <div class="page prose">
-    <h1>404: Page not found</h1>
-    <p>
-      Sorry, we’ve misplaced that URL or it’s pointing to something that doesn’t exist.
-      <a href="/">Head back home</a> to try finding it again.
-    </p>
+  <div class="wrap narrow">
+    <header class="page-header">
+      <p class="eyebrow">HTTP 404</p>
+      <h1>Nothing is listening on this route.</h1>
+      <p class="lead">
+        The page you asked for doesn't exist, or it moved when this site was rebuilt.
+        Try <a href="/writing/">the writing archive</a> or <a href="/">start from the top</a>.
+      </p>
+    </header>
   </div>
 </Base>

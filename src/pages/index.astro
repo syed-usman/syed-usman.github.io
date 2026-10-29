@@ -1,59 +1,136 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import { formatDate, getPosts, postUrl } from '../site';
+import PostList from '../components/PostList.astro';
+import portrait from '../assets/display-picture.jpg';
+import { SITE, getPosts } from '../site';
 
 const posts = await getPosts();
+
+const numbers = [
+  { value: '200/200', label: 'learners served in the final load test, up from 15–23% failed logins' },
+  { value: '30%+', label: 'lower infrastructure cost after moving a 10,000+ learner platform to autoscaling Kubernetes' },
+  { value: '900+', label: 'lifts monitored by Franz, an IoT platform my team took from zero to MVP in under six months' },
+  { value: '1–4 h', label: 'measured restore time in recovery drills for the platform’s main databases' },
+];
+
+const cases = [
+  {
+    tag: 'Reliability',
+    title: 'The 200-user wall',
+    problem:
+      'A load test stalled at ~170 of 200 users and 15–23% of logins failed, while every application log looked clean.',
+    work: 'Ten instrumented runs, one layer ruled out per run, until node autoscaling turned out to be reconfiguring the load balancer mid-test.',
+    result: '200/200 users, zero failures, fixed in Terraform and Helm so the next deploy can’t undo it.',
+    href: '/2026-10-28/the-200-user-wall/',
+    cta: 'Read the write-up',
+  },
+  {
+    tag: 'Recovery',
+    title: 'Backups someone has actually restored',
+    problem: 'Learner data lives on Kubernetes volumes, and a backup nobody has restored from is only a hope.',
+    work: 'Velero and Kopia volume backups with 90-day retention, a restore runbook from single file to full environment, and a script that works out the minimal restore chain.',
+    result: 'Recovery drills on the two main databases, with a measured restore time of 1–4 hours.',
+    href: '/2026-10-29/a-backup-counts-once-restored/',
+    cta: 'Read the write-up',
+  },
+  {
+    tag: 'AI guardrails',
+    title: 'Letting an AI agent near production, safely',
+    problem: 'We wanted Claude to investigate infrastructure issues on its own, without handing it a human’s keys.',
+    work: 'A dedicated least-privilege identity with short-lived OIDC credentials, network allow-listing and full audit logs, running unattended in sandboxes. A default-deny tool hook for our ticket-to-merge-request pipeline.',
+    result: 'An agent that investigates on its own, scoped read-only and isolated from production, with every action in the audit log.',
+    href: '/2026-10-29/guardrails-for-ai-agents/',
+    cta: 'Read the write-up',
+  },
+  {
+    tag: 'Leadership',
+    title: 'Franz: from zero to 900+ lifts',
+    problem: 'An elevator-monitoring product needed hardware, firmware, edge software and cloud, built by one team at once.',
+    work: 'Led a cross-functional team across frontend, backend, firmware and embedded Linux; built the edge layer and an over-the-air update system myself.',
+    result: 'A working MVP in under six months. The platform now monitors 900+ lifts in production.',
+    href: '/work/#relayr',
+    cta: 'More in my work',
+  },
+];
 ---
 
 <Base>
-  <section class="intro prose">
-    <h1>Infrastructure engineer. Evidence first, everything as code.</h1>
-    <p>
-      I've spent a decade building and running cloud platforms, from industrial IoT fleets to e-learning platforms
-      on Kubernetes. I debug production-scale problems from the evidence up, turn the fix into code and runbooks,
-      and build guardrails so AI agents can work safely on real infrastructure.
-    </p>
-    <ul class="highlights">
-      <li>
-        <strong>200/200</strong> concurrent users on a JupyterHub platform, up from 15–23% failed logins, after
-        tracing the cause to load-balancer churn from node autoscaling
-        (<a href="/2026-10-28/the-200-user-wall/">the write-up</a>)
-      </li>
-      <li>
-        <strong>30%+ lower</strong> infrastructure cost after moving a platform serving 10,000+ learners to
-        autoscaling Kubernetes on Hetzner and Scaleway
-      </li>
-      <li>
-        <strong>900+ lifts</strong> monitored in production by Franz, an IoT platform built by the cross-functional team I
-        led from zero to MVP in under six months
-      </li>
-      <li>
-        <strong>Least-privilege</strong> AI agents on real infrastructure: short-lived OIDC credentials, sandboxed
-        unattended runs and default-deny tool access
-      </li>
-    </ul>
-    <p>
-      Senior DevOps/Infrastructure Engineer at Multiverse, previously Tech Lead at Relayr. More in
-      <a href="/work/">My Work</a> and <a href="/about/">About</a>.
-    </p>
+  <section class="wrap hero">
+    <div class="hero-text">
+      <p class="eyebrow">Infrastructure engineer · Berlin</p>
+      <h1>I find out why production broke, fix it in code, and make sure it stays fixed.</h1>
+      <p class="lead">
+        For a decade I’ve built and run the platforms other engineers build on: from sensors in 900+ elevators to a
+        learning platform on Kubernetes for 10,000+ learners. Lately I also build the guardrails that let AI agents work
+        on real infrastructure without becoming the next incident. I write here about what broke, what I got wrong, and
+        what I’d do again.
+      </p>
+      <p class="actions">
+        <a class="button" href="/2026-10-28/the-200-user-wall/">Read “The 200-user wall”</a>
+        <a class="button button-quiet" href="/work/">See my work</a>
+      </p>
+    </div>
+    <figure class="hero-portrait">
+      <Image src={portrait} alt="Syed Usman, smiling, on a balcony above Berlin" width={480} height={600} fit="cover" position="top" loading="eager" />
+    </figure>
   </section>
 
-  <h2 class="section-title">Writing</h2>
-  <ol class="post-list">
-    {
-      posts.map((post) => (
-        <li>
-          <article>
-            <h3>
-              <a href={postUrl(post)}>{post.data.title}</a>
-            </h3>
-            <time class="post-date" datetime={post.data.date.toISOString().slice(0, 10)}>
-              {formatDate(post.data.date)}
-            </time>
-            {post.data.description && <p>{post.data.description}</p>}
+  <section class="wrap" aria-labelledby="numbers">
+    <h2 id="numbers" class="section-label">By the numbers</h2>
+    <ul class="numbers">
+      {
+        numbers.map((n) => (
+          <li>
+            <strong>{n.value}</strong>
+            <span>{n.label}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="wrap" aria-labelledby="selected">
+    <h2 id="selected" class="section-label">Selected work</h2>
+    <div class="cases">
+      {
+        cases.map((c) => (
+          <article class="case">
+            <p class="case-tag">{c.tag}</p>
+            <h3>{c.title}</h3>
+            <dl>
+              <dt>Problem</dt>
+              <dd>{c.problem}</dd>
+              <dt>What I did</dt>
+              <dd>{c.work}</dd>
+              <dt>Result</dt>
+              <dd>{c.result}</dd>
+            </dl>
+            <a class="case-link" href={c.href}>
+              {c.cta} <span aria-hidden="true">→</span>
+            </a>
           </article>
-        </li>
-      ))
-    }
-  </ol>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="writing">
+    <div class="narrow">
+    <h2 id="writing" class="section-label">Writing</h2>
+    <PostList posts={posts.slice(0, 5)} />
+    {posts.length > 5 && <p><a class="case-link" href="/writing/">All writing →</a></p>}
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="hello">
+    <div class="narrow cta">
+    <h2 id="hello">Building a platform team?</h2>
+    <p>
+      I like hard reliability problems, teams that write things down, and work where the fix ends up in code instead of
+      someone’s memory. If that sounds like your team, I’d like to hear what you’re working on.
+    </p>
+    <p><a class="button" href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+    </div>
+  </section>
 </Base>

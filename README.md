@@ -27,9 +27,10 @@ draft: true   # optional; drafts only appear in `npm run dev`
 ---
 ```
 
-The post is published at `/YYYY-MM-DD/slug/`. The About and My Work pages are
-Markdown files in `src/pages/`; site name, navigation and social links are in
-`src/site.ts`.
+The post is published at `/YYYY-MM-DD/slug/`. The About page is Markdown in
+`src/pages/about.md`; the home and Work pages keep their content as data at the
+top of `src/pages/index.astro` and `src/pages/work.astro`. Site name, email,
+navigation and social links are in `src/site.ts`.
 
 ## Deploy
 

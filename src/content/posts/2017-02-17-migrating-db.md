@@ -1,9 +1,11 @@
 ---
-title: "Migrating Large databases to AWS"
+title: "Migrating large databases to AWS"
 description: "What to plan for when moving large on-premise databases to AWS: transfer mechanisms, downtime, RDS sizing and migration time."
 date: 2017-02-17
 ---
-If you are moving large, on-premise database into the cloud, read on, it will help.
+*Written in 2017. Instance types and some services have moved on since, but the planning questions and checklists still hold.*
+
+If you are moving a large on-premise database into the cloud, read on; it will help.
 
 AWS provides a few choices for deploying large-scale solutions in a rapid, reliable, and cost-effective manner. That said, there are quite many things that come to mind when tearing down on-premise data centers and making the move to AWS. A migration project is akin to you moving someplace. There’s a lot of things that need to be considered.
 
