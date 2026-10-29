@@ -1,4 +1,6 @@
+# Search engines and AI agents are welcome.
 User-agent: *
 Allow: /
 
+# Plain-markdown summaries for agents: /llms.txt and /llms-full.txt
 Sitemap: https://syed-usman.github.io/sitemap-index.xml
