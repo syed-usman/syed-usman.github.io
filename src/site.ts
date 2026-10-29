@@ -18,7 +18,7 @@ export const NAV = [
 
 export const SOCIAL = [
   { label: 'GitHub', href: 'https://github.com/syed-usman' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/syed-usman-kaleem/' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/syedusmankaleem/' },
   { label: 'Atom feed', href: '/atom.xml' },
 ];
 

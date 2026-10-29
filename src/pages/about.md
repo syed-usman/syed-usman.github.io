@@ -33,4 +33,4 @@ I speak English natively and German at B1, improving slowly. I earned the AWS So
 
 ## Get in touch
 
-The best way to reach me is email: [syedusmankaleem@live.com](mailto:syedusmankaleem@live.com). I'm also on [LinkedIn](https://www.linkedin.com/in/syed-usman-kaleem/) and [GitHub](https://github.com/syed-usman).
+The best way to reach me is email: [syedusmankaleem@live.com](mailto:syedusmankaleem@live.com). I'm also on [LinkedIn](https://www.linkedin.com/in/syedusmankaleem/) and [GitHub](https://github.com/syed-usman).
