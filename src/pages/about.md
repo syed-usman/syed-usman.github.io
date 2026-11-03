@@ -10,8 +10,8 @@ description: "About Syed Usman, an infrastructure engineer and former Solutions 
 
 I studied software engineering at NUST in Islamabad, graduated as a gold medallist in 2015, and started my career at YotaScale, working between Palo Alto and Lahore on a pipeline that dug through AWS bills to find waste. It was my first lesson that infrastructure is mostly about paying attention to what's actually happening, not what the diagram says.
 
-![A desk with a MacBook, a landscape monitor and a portrait monitor, headphones hanging on the cubicle wall](../assets/about/desk-2016.jpg)
-<p class="photo-caption">My desk in the YotaScale days, 2016.</p>
+![Syed at his desk in front of two monitors and a laptop](../assets/about/early-desk.jpg)
+<p class="photo-caption">Early in my career.</p>
 
 In 2017 I moved to Berlin. After a year at Colormass moving a Django monolith onto Kubernetes, I joined relayr, Munich Re's industrial IoT company, and spent five years in industrial IoT, growing from solutions engineer to senior solutions engineer to solutions architect. As an architect I was also the tech lead of a cross-functional team of 8 engineers, without the title. Hardware is a strict teacher. A bad deploy to a cloud service costs you an hour, but a bad deploy to a gateway bolted inside an elevator shaft costs you a site visit. I learned a lot about vendors, over-the-air updates and debugging a mess of wires at midnight.
 
@@ -21,10 +21,13 @@ In 2017 I moved to Berlin. After a year at Colormass moving a Django monolith on
 ![Syed with four teammates in front of a retrospective board and a video call screen; teammates' faces blurred](../assets/work/workshop-team.jpg)
 <p class="photo-caption">With my team at relayr, 2020 (teammates blurred).</p>
 
+![A home office desk by a sunny window in Berlin, with a laptop on a stand, a monitor, sticky notes and a whiteboard](../assets/about/berlin-desk.jpg)
+<p class="photo-caption">My home office in Berlin during the relayr years.</p>
+
 Since then I've built AWS platforms at Jillion, and today I'm a Senior DevOps/Infrastructure Engineer at [Multiverse](https://www.multiverse.io) (I joined StackFuel, which Multiverse acquired in 2025), running the Kubernetes platform behind hands-on courses for 10,000+ learners. The full history is on [my work page](/work/).
 
-![A home office desk under a window with blue sky: three screens, a mechanical keyboard and a laptop on a stand](../assets/about/desk-today.jpg)
-<p class="photo-caption">My desk today.</p>
+![Syed taking a selfie in his attic home office, with a standing desk, a monitor and a laptop behind him](../assets/about/attic-selfie.jpg)
+<p class="photo-caption">At my desk today.</p>
 
 ## How I work
 
