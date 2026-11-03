@@ -571,6 +571,22 @@ main {
   margin: 0 0 1.35rem;
 }
 
+.prose img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 26rem;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-top: 1.75rem;
+}
+
+.prose .photo-caption {
+  margin-top: 0.4rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
 .prose h2 {
   margin: 2.75rem 0 0.9rem;
   font-size: 1.65rem;
