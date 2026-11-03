@@ -1,6 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
 import { SITE } from '../site';
+import relayrSensorInLift from '../assets/work/relayr-sensor-in-lift.jpg';
+import liftShaft from '../assets/work/lift-shaft.jpg';
+import gatewayEnclosure from '../assets/work/gateway-enclosure.jpg';
+import gatewayOnBench from '../assets/work/gateway-on-bench.jpg';
+import doorRailSensors from '../assets/work/door-rail-sensors.jpg';
+import sensorBoxPrototype from '../assets/work/sensor-box-prototype.jpg';
+import officeTeam from '../assets/work/office-team.jpg';
+import workshopTeam from '../assets/work/workshop-team.jpg';
+import officeDesk from '../assets/work/office-desk.jpg';
 
 const strengths = [
   {
@@ -27,6 +37,7 @@ type Role = {
   note?: string;
   items: { lead: string; text: string; link?: { href: string; label: string } }[];
   stack?: string;
+  photos?: { src: ImageMetadata; alt: string; caption: string; position?: string }[];
 };
 
 const roles: Role[] = [
@@ -119,6 +130,14 @@ const roles: Role[] = [
     title: 'Senior Solutions Engineer',
     dates: 'May 2019 – Apr 2021',
     place: 'Berlin',
+    photos: [
+      { src: relayrSensorInLift, alt: 'A white relayr-branded sensor mounted in the corner of a lift car', caption: 'A relayr sensor in a lift car, 2019' },
+      { src: doorRailSensors, alt: 'Red sensors mounted on a lift door rail', caption: 'Sensors on a lift door rail, 2019' },
+      { src: gatewayOnBench, alt: 'Open grey enclosure with a single-board computer and backup battery, tools on the desk around it', caption: 'Assembling a gateway, 2019' },
+      { src: sensorBoxPrototype, alt: 'Prototype board with sensors and jumper wires mounted on a clear plate', caption: 'Prototyping a sensor box, 2020' },
+      { src: officeDesk, alt: 'Syed working at a desk in the office, with boxes of hardware on the desk in front', caption: 'Hardware day at the office, 2020', position: '0% center' },
+      { src: workshopTeam, alt: 'Syed with four teammates in front of a retrospective board and a video call screen; teammates\' faces blurred', caption: 'Team retro, 2020 (teammates blurred)', position: '36% center' },
+    ],
     items: [
       {
         lead: 'Franz, from zero to 900+ lifts.',
@@ -132,6 +151,11 @@ const roles: Role[] = [
     title: 'Solutions Engineer',
     dates: 'Jul 2018 – Apr 2019',
     place: 'Berlin',
+    photos: [
+      { src: officeTeam, alt: 'Selfie of Syed in the relayr office with teammates at their desks behind him; teammates\' faces blurred', caption: 'The relayr office, 2018 (teammates blurred)', position: '42% center' },
+      { src: gatewayEnclosure, alt: 'Open gateway enclosure with an interface board, cellular modem and power supply, connected to a debugger', caption: 'Edge gateway on the debugger, 2019' },
+      { src: liftShaft, alt: 'Looking down a lift shaft at a sensor mounted on the car', caption: 'Installing in a lift shaft, 2019' },
+    ],
     items: [
       {
         lead: 'Backend for lift monitoring on AWS.',
@@ -232,6 +256,22 @@ const toolbox = [
                 ))}
               </ul>
               {role.stack && <p class="role-stack">{role.stack}</p>}
+              {role.photos && (
+                <div class="role-photos">
+                  {role.photos.map((photo) => (
+                    <figure>
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        widths={[360, 720]}
+                        sizes="(max-width: 34rem) 45vw, 14rem"
+                        style={photo.position && `object-position: ${photo.position}`}
+                      />
+                      <figcaption>{photo.caption}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              )}
             </div>
           </li>
         ))
