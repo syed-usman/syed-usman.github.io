@@ -7,6 +7,8 @@ date: 2017-02-17
 
 If you are moving a large on-premise database into the cloud, read on; it will help.
 
+The hard part of moving a big database isn't the copy command. It's everything around it: how much downtime the business can accept, how long it takes to push hundreds of gigabytes over a network, and what breaks when the database's address changes. This post walks through the questions to ask first, the checklists I use before and after, and three ways to move the data, from shipping a hard drive to a fully managed service.
+
 AWS provides a few choices for deploying large-scale solutions in a rapid, reliable, and cost-effective manner. That said, there are quite many things that come to mind when tearing down on-premise data centers and making the move to AWS. A migration project is akin to you moving someplace. There’s a lot of things that need to be considered.
 
 Here is a list of some of the key things we’d need to deliberate upon as we dive into this process:
@@ -102,3 +104,13 @@ When you are done, here is a simple post-migration checklist:
 - Tighten down the security
 - Setup cloud-watch notifications.
 - Put anything else back in place which you might have changed for migration.
+
+## What this means for you
+
+The tools have changed since 2017, and managed migration services are now mature enough to be the default choice for most moves. What hasn't changed is where migrations go wrong:
+
+- **Start with the questions, not the tool.** Downtime tolerance, data size and the systems connected to the database decide which method works. Pick the method after you have those answers.
+- **Run a pilot on real data.** Move a meaningful slice with your chosen method and time it. That number is worth more than any estimate.
+- **Rehearse the cut-over and the rollback.** Know exactly how you will switch applications to the new database, and how you will switch back if it misbehaves.
+- **Don't move what you don't need.** Drop indexes you can rebuild, and leave behind data nobody reads.
+- **Treat the post-migration checklist as part of the migration.** Backups, high availability, security and alerts are what make it production, not an afterthought.
