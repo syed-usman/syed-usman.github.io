@@ -882,6 +882,126 @@ main {
   }
 }
 
+/* About: story rows with photos beside the text, alternating sides */
+
+.about .section-label {
+  margin-top: 3.5rem;
+}
+
+.story {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 6fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  margin-block: 1.5rem;
+}
+
+.story-flip .story-text {
+  order: 2;
+}
+
+.story-text p:last-child {
+  margin-bottom: 0;
+}
+
+.story-photos {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.story-photos-pair {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.photo {
+  margin: 0;
+}
+
+.photo img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+  background: var(--rule);
+}
+
+.story-photos-pair .photo img {
+  aspect-ratio: 4 / 5;
+}
+
+/* Offset the second photo of a pair so the two don't read as one block */
+.story-photos-pair .photo:nth-child(2) {
+  margin-top: 2.5rem;
+}
+
+.photo figcaption {
+  margin-top: 0.4rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.principles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.principles li {
+  padding: 1.4rem 1.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.principles h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+.principles p {
+  margin: 0;
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+
+.about-closing {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 3rem;
+}
+
+.about-closing p {
+  margin: 0;
+  line-height: 1.65;
+}
+
+@media (max-width: 60rem) {
+  .principles,
+  .about-closing {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 48rem) {
+  .story {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .story-flip .story-text {
+    order: 0;
+  }
+
+  .principles,
+  .about-closing {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .two-col {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
