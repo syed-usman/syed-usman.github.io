@@ -1,5 +1,5 @@
 ---
-title: "Migrating large databases to AWS"
+title: "How to plan moving a large Oracle database to AWS"
 description: "What to plan for when moving a large on-premise Oracle database to AWS: the questions to ask, three ways to move the data, and the checklists around them."
 date: 2017-02-17
 ---

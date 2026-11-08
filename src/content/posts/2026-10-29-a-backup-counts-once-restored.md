@@ -1,5 +1,5 @@
 ---
-title: "A backup counts once someone has restored from it"
+title: "We had backups, but we’d never restored one"
 description: "We had backups. What we didn’t have was a restore anyone had tried, or a time we could promise. This is what it took to fix that."
 date: 2026-10-29
 ---

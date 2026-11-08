@@ -4,7 +4,7 @@ import { SITE, SOCIAL, formatDate, getPosts, postUrl } from './site';
 // Keep in sync with the Work and About pages.
 const profile = `# ${SITE.author}
 
-> ${SITE.author} (${SITE.alternateName}) is an infrastructure and DevOps engineer in Berlin, Germany, with a decade of building and running production platforms: Kubernetes, Terraform, reliability, backup and recovery, and guardrails for AI agents on real infrastructure. Previously Solutions Architect and team tech lead in industrial IoT.
+> ${SITE.author} (${SITE.alternateName}) is an engineer in Berlin, Germany. Over the past year he has done about 99% of his work with AI (Claude Code, with skills and a team harness), building and running DevOps and infrastructure. Before that, ten years across backend and frontend development, industrial IoT, solutions architecture and team leadership, and Kubernetes platforms.
 
 - Location: Berlin, Germany
 - Email: ${SITE.email}
@@ -31,7 +31,7 @@ ${SOCIAL.filter((s) => s.href.startsWith('http'))
 - GitLab CI, GitHub Actions, Jenkins
 - Prometheus, Grafana, OpenTelemetry, New Relic, Datadog
 - Keycloak, OIDC federation, sandboxing, secrets management
-- AI tooling: Claude Code pipelines, agent identity and sandboxing
+- AI: Claude Code skills, subagents and hooks, a team-built harness, the BMAD Method, agent identity and sandboxing
 - Python, Bash, SQL, PostgreSQL, Kafka, MQTT
 
 ## Education

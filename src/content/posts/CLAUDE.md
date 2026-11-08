@@ -52,6 +52,14 @@ That costs more trust than a typo does.
 The reading time is shown on every post (`readingTime` in `src/site.ts`,
 230 words a minute), so check it in `npm run dev` before publishing.
 
+## Titles
+
+A title should tell the reader what the post is about before they click,
+in words Syed would say out loud: "Why our load test kept failing at 170
+users", "We had backups, but we’d never restored one". No slogans, no
+colons. The URL comes from the filename, so a title can change without
+breaking links.
+
 ## How the posts read
 
 The best engineering writing is concrete, personal and short: Cloudflare's
@@ -90,7 +98,8 @@ Cut these on sight:
 - "X, not Y" contrasts in every other sentence, and colon reveals ("The
   answer: …", "Here's the thing:").
 - Signposting: "Here's how…", "Let's dive in", "In this post I will…".
-- Titles with a colon and a subtitle. Keep titles short.
+- Titles with a colon and a subtitle, or clever titles that only make sense
+  after reading the post ("The 200-user wall").
 - Words like leverage, robust, seamless, crucial, delve, journey, landscape,
   game-changer.
 

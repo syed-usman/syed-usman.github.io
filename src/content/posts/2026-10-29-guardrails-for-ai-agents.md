@@ -1,5 +1,5 @@
 ---
-title: "An allow-list is not a sandbox"
+title: "How we let an AI agent work on our infrastructure safely"
 description: "What I learned giving Claude its own identity, credentials and sandbox, so it could look into infrastructure problems without borrowing anyone’s keys."
 date: 2026-10-29
 ---

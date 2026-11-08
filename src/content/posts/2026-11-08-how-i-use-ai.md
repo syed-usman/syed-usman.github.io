@@ -1,5 +1,5 @@
 ---
-title: "How I use AI, at work and at home"
+title: "How I do almost all my work with AI now"
 description: "About 3,600 prompts in five months, most of them shorter than this sentence. What I hand to Claude, what I keep, and where it still goes wrong."
 date: 2026-11-08
 ---
@@ -10,7 +10,11 @@ That's probably the most honest summary of how I use it. I don't write long, car
 
 ## At work
 
-My day job is infrastructure: Kubernetes, Terraform, Helm, Ansible, CI. A lot of what I ship now is written with Claude. My part is deciding what we're doing, checking what comes back, and stopping it when it heads somewhere I didn't ask for.
+My day job is infrastructure: Kubernetes, Terraform, Helm, Ansible, CI. Over the past year about 99% of that work has gone through Claude. My part is deciding what we're doing, checking what comes back, and stopping it when it heads somewhere I didn't ask for.
+
+Anything I do on a regular basis becomes a skill. Some projects run on a harness, sometimes the [BMAD Method](https://github.com/bmad-code-org/BMAD-METHOD), more often a simple one we built and tuned for our team. Others don't need one. A few of the best skills we use came from [Matt Pocock](https://github.com/mattpocock/skills).
+
+My favourite one is a set of skills that learn how my colleagues review code. Every reviewer has things they always pick up on. The skills spot those patterns and check my merge requests for them before anyone sees them, so ideally nobody has to leave a comment at all.
 
 I work one ticket per branch, often several at once in separate git worktrees, with skills and subagents for the repetitive parts and jobs running in the background. Some days that adds up to more than a thousand messages.
 

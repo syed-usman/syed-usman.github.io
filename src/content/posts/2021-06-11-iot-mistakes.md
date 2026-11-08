@@ -1,5 +1,5 @@
 ---
-title: "The mistakes that cost us most building an IoT product"
+title: "Four expensive mistakes we made building an IoT product"
 description: "Four expensive lessons from shipping three end-to-end IoT products: picking vendors, picking hardware, reviewing vendor work, and knowing when to buy."
 date: 2021-06-11
 ---

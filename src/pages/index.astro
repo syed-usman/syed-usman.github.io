@@ -8,16 +8,24 @@ import { SITE, getPosts } from '../site';
 const posts = await getPosts();
 
 const numbers = [
-  { value: '10+', label: 'years building and running production infrastructure' },
+  { value: '99%', label: 'of my work in the past year done with AI' },
+  { value: '10 yrs', label: 'across software, IoT, solutions architecture and infrastructure' },
   { value: '10k+', label: 'learners on the Kubernetes platform I look after now' },
-  { value: '30%+', label: 'cut in infrastructure cost when we moved that platform to autoscaling Kubernetes' },
   { value: '900+', label: 'lifts monitored by Franz, an IoT product I helped build from scratch' },
 ];
 
 const cases = [
   {
+    tag: 'AI agents',
+    title: 'How we let an AI agent work on our infrastructure safely',
+    summary:
+      'We wanted an AI agent to look into infrastructure problems without borrowing anyone’s access. So it got its own identity, short-lived credentials, a sandbox, and a hook that blocks anything we haven’t allowed.',
+    href: '/2026-10-29/guardrails-for-ai-agents/',
+    cta: 'Read the post',
+  },
+  {
     tag: 'Reliability',
-    title: 'The 200-user wall',
+    title: 'Why our load test kept failing at 170 users',
     summary:
       'A load test kept stalling at about 170 of 200 users, and every log looked fine. It took ten runs to find out that autoscaling was reconfiguring the load balancer in the middle of the test. Now all 200 get in.',
     href: '/2026-10-28/the-200-user-wall/',
@@ -25,23 +33,15 @@ const cases = [
   },
   {
     tag: 'Recovery',
-    title: 'Backups someone has actually restored',
+    title: 'We had backups, but we’d never restored one',
     summary:
       'We had backups, but nobody had ever restored from one. I wrote the runbook and a script that works out which backups you need, and then we timed a real restore of the main databases.',
     href: '/2026-10-29/a-backup-counts-once-restored/',
     cta: 'Read the post',
   },
   {
-    tag: 'AI agents',
-    title: 'Letting Claude near our infrastructure',
-    summary:
-      'We wanted an AI agent to look into infrastructure problems without borrowing anyone’s access. So it got its own identity, short-lived credentials, a sandbox, and a hook that blocks anything we haven’t allowed.',
-    href: '/2026-10-29/guardrails-for-ai-agents/',
-    cta: 'Read the post',
-  },
-  {
     tag: 'IoT',
-    title: 'Franz, from nothing to 900+ lifts',
+    title: 'Building a lift-monitoring product from scratch',
     summary:
       'A lift-monitoring product with its own hardware, firmware, edge software and cloud, built by one team at the same time. I built the edge software and the over-the-air updates. We had a working MVP in under six months.',
     href: '/work/#relayr-senior',
@@ -53,22 +53,42 @@ const cases = [
 <Base>
   <section class="wrap hero">
     <div class="hero-text">
-      <p class="eyebrow">Syed Usman · Infrastructure &amp; DevOps engineer · Berlin</p>
-      <h1>Hi, I’m Syed. I build and run infrastructure in Berlin.</h1>
+      <p class="eyebrow">Syed Usman · Engineer · Berlin</p>
+      <h1>Hi, I’m Syed. For the past year, almost everything I’ve built, I’ve built with AI.</h1>
       <p class="lead">
-        I’ve spent about ten years on platforms that other engineers depend on. Right now that’s a Kubernetes platform
-        for more than 10,000 learners. Before that it was industrial IoT, including sensors in over 900 lifts. Lately
-        I’ve also been working out how to let AI agents near real infrastructure safely. I write here about things that
-        broke, and what I got wrong on the way to fixing them.
+        I build and run infrastructure: Kubernetes, Terraform, CI and the platforms around them. About 99% of that work
+        now goes through Claude Code. Before that I spent ten years doing it by hand: backend and frontend code, IoT products with their own hardware,
+        solutions architecture and leading a team, and the platforms other engineers build on.
       </p>
       <p class="actions">
-        <a class="button" href="/2026-10-28/the-200-user-wall/">Read “The 200-user wall”</a>
+        <a class="button" href="/2026-11-08/how-i-use-ai/">How I work with AI</a>
         <a class="button button-quiet" href="/work/">See my work</a>
       </p>
     </div>
     <figure class="hero-portrait">
       <Image src={portrait} alt="Syed Usman, smiling, on a balcony above Berlin" width={480} height={600} fit="cover" position="top" loading="eager" />
     </figure>
+  </section>
+
+  <section class="wrap" aria-labelledby="ai">
+    <div class="narrow prose home-ai">
+      <h2 id="ai" class="section-label">How I work now</h2>
+      <p>
+        Anything I do more than a couple of times becomes a skill. For bigger projects we use a harness: sometimes
+        the <a href="https://github.com/bmad-code-org/BMAD-METHOD">BMAD Method</a>, more often a simple one we built
+        and tuned for our own team. Some of the best skills we use came from
+        <a href="https://github.com/mattpocock/skills">Matt Pocock</a>.
+      </p>
+      <p>
+        One example I like: I have skills that learn the patterns in how my colleagues review code, the things they
+        always comment on, and check my merge requests for them before anyone else sees them. The goal is a merge
+        request nobody needs to leave a comment on.
+      </p>
+      <p>
+        None of this replaces knowing the systems. It’s why the ten years matter. I can tell when the agent is wrong,
+        and I decide what it’s allowed to touch.
+      </p>
+    </div>
   </section>
 
   <section class="wrap" aria-labelledby="numbers">
@@ -113,10 +133,10 @@ const cases = [
 
   <section class="wrap" aria-labelledby="hello">
     <div class="narrow cta">
-    <h2 id="hello">Hiring for platform work?</h2>
+    <h2 id="hello">Hiring?</h2>
     <p>
-      If you’re building a platform or infrastructure team, I’d like to hear what you’re working on. Email is the best
-      way to reach me.
+      If you’re looking for an engineer who builds and runs infrastructure with AI, I’d like to hear what you’re
+      working on. Email is the best way to reach me.
     </p>
     <p><a class="button" href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
     </div>

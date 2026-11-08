@@ -431,6 +431,10 @@ main {
   font-size: 1.5rem;
 }
 
+.home-ai {
+  margin-bottom: 3rem;
+}
+
 .case-summary {
   margin: 0 0 1.25rem;
   color: var(--ink-2);
