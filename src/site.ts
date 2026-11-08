@@ -11,6 +11,8 @@ export const SITE = {
   jobTitle: 'Senior DevOps & Platform Engineer',
   email: 'syedusmankaleem@live.com',
   locale: 'en',
+  /** GoatCounter site code (https://<code>.goatcounter.com). Empty = no analytics script. */
+  goatcounter: '',
 };
 
 export const NAV = [
