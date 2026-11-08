@@ -11,6 +11,6 @@ const { src, alt, caption } = Astro.props;
 ---
 
 <figure class="photo">
-  <Image src={src} alt={alt} widths={[480, 800, 1200]} sizes="(max-width: 48rem) 92vw, 26rem" />
+  <Image src={src} alt={alt} widths={[480, 800, 1200, 1600]} sizes="(max-width: 48rem) 92vw, 26rem" />
   <figcaption>{caption}</figcaption>
 </figure>

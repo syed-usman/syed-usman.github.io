@@ -152,5 +152,62 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [person, website, p
         <p class="footer-note">Built with Astro and hosted on GitHub Pages. No cookies or tracking.</p>
       </div>
     </footer>
+    <dialog class="lightbox" aria-label="Photo">
+      <button class="lightbox-close" type="button" aria-label="Close photo">×</button>
+      <figure>
+        <img alt="" />
+        <figcaption></figcaption>
+      </figure>
+    </dialog>
+    <script>
+      // Click a photo to see it large. Uses the biggest file from the image's srcset.
+      const dialog = document.querySelector<HTMLDialogElement>('.lightbox')!;
+      const big = dialog.querySelector('img')!;
+      const caption = dialog.querySelector('figcaption')!;
+
+      const largest = (img: HTMLImageElement) => {
+        const candidates = (img.srcset || '')
+          .split(',')
+          .map((c) => c.trim().split(/\s+/))
+          .filter(([url]) => url)
+          .map(([url, w]) => ({ url, w: parseInt(w) || 0 }));
+        return candidates.sort((a, b) => b.w - a.w)[0]?.url || img.currentSrc || img.src;
+      };
+
+      const open = (img: HTMLImageElement) => {
+        big.src = largest(img);
+        big.alt = img.alt;
+        const figure = img.closest('figure');
+        const text =
+          figure?.querySelector('figcaption')?.textContent ||
+          (img.closest('p')?.nextElementSibling?.classList.contains('photo-caption')
+            ? img.closest('p')!.nextElementSibling!.textContent
+            : '');
+        caption.textContent = text?.trim() || '';
+        caption.hidden = !caption.textContent;
+        dialog.showModal();
+      };
+
+      document.querySelectorAll<HTMLImageElement>('.photo img, .role-photos img, .prose img').forEach((img) => {
+        img.classList.add('zoomable');
+        img.tabIndex = 0;
+        img.setAttribute('role', 'button');
+        img.setAttribute('aria-label', `Open larger photo: ${img.alt}`);
+        img.addEventListener('click', () => open(img));
+        img.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            open(img);
+          }
+        });
+      });
+
+      dialog.querySelector('.lightbox-close')!.addEventListener('click', () => dialog.close());
+      // Clicking the dark area around the photo closes it too. Escape is handled by <dialog>.
+      dialog.addEventListener('click', (e) => {
+        if (e.target === dialog || e.target === dialog.querySelector('figure')) dialog.close();
+      });
+      dialog.addEventListener('close', () => big.removeAttribute('src'));
+    </script>
   </body>
 </html>

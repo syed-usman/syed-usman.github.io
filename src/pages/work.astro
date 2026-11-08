@@ -125,6 +125,8 @@ const roles: Role[] = [
     dates: 'Jul 2017 – Apr 2018',
     place: 'Berlin',
     items: [
+      'Built a 3D scene editor in the browser with three.js. Clients set up their scenes and camera angles in it, and our 3D designers used that to make the final renders in 3ds Max.',
+      'Ported Google’s Draco geometry compression from C++ to JavaScript, so the editor could compress and decompress heavy 3D models in the browser. A lot of the C++ wasn’t well documented, so much of the work was figuring out what it actually did.',
       'Moved a Django monolith from App Engine to microservices on Kubernetes with Jenkins CI/CD, and built a render farm on GCP in Python that cut render times roughly in half.',
     ],
   },
@@ -204,7 +206,7 @@ const toolbox = [
                       <Image
                         src={photo.src}
                         alt={photo.alt}
-                        widths={[360, 720]}
+                        widths={[360, 720, 1440]}
                         sizes="(max-width: 34rem) 45vw, 14rem"
                         style={photo.position && `object-position: ${photo.position}`}
                       />
