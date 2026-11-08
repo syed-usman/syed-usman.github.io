@@ -10,32 +10,6 @@ import franzHardware from '../assets/about/relayr-franz-hardware.jpg';
 import covidDesk from '../assets/about/relayr-covid-home-office.jpg';
 import deskToday from '../assets/about/desk-today.jpg';
 
-const principles = [
-  {
-    title: 'Evidence first.',
-    text: 'When something breaks, I instrument every layer and rule causes out one at a time. I write down what was ruled out, including my own wrong guesses, so nobody repeats them.',
-  },
-  {
-    title: 'Codify, don’t patch.',
-    text: 'A live fix isn’t done until it’s in Terraform, Helm or Ansible. A manual change gets reverted by the next deploy, usually at the worst time.',
-  },
-  {
-    title: 'Recovery you can actually run.',
-    text: 'A backup counts once someone has restored from it. I write the runbook and then run the drill.',
-  },
-  {
-    title: 'Short docs that explain why.',
-    text: 'Runbooks, ADRs and known-issues pages that record the reasoning as well as the steps.',
-  },
-  {
-    title: 'Guardrails for AI agents.',
-    text: 'Agents get their own least-privilege identity, short-lived credentials, a sandbox and default-deny tool access. Anything they read from a ticket or a web page is untrusted input.',
-  },
-  {
-    title: 'Leading means unblocking.',
-    text: 'As a tech lead I hired, ran 1:1s, planned with clients and ran incidents. Most of the job was making it easy for the team to ship.',
-  },
-];
 ---
 
 {/* Photos sit beside the part of the story they belong to; they stack under the text on narrow screens. */}
@@ -48,8 +22,8 @@ const principles = [
       <p class="eyebrow">About</p>
       <h1>About</h1>
       <p class="lead">
-        I’m Syed, an infrastructure engineer in Berlin. I like the problems that only show up in production, and I like
-        making sure they only show up once.
+        I’m Syed, an infrastructure engineer in Berlin. This is the longer version of how I got here and how I like to
+        work.
       </p>
     </header>
 
@@ -60,8 +34,7 @@ const principles = [
         <p>
           I studied software engineering at NUST in Islamabad, graduated as a gold medallist in 2015, and started my
           career at YotaScale, working between Palo Alto and Lahore on a pipeline that dug through AWS bills to find
-          waste. It was my first lesson that infrastructure is mostly about paying attention to what’s actually
-          happening, not what the diagram says.
+          waste.
         </p>
       </div>
       <div class="story-photos">
@@ -74,8 +47,8 @@ const principles = [
         <p>
           In 2017 I moved to Berlin. After a year at Colormass moving a Django monolith onto Kubernetes, I joined relayr,
           Munich Re’s industrial IoT company, and spent five years in industrial IoT, growing from solutions engineer to
-          senior solutions engineer to solutions architect. As an architect I was also the tech lead of a
-          cross-functional team of 8 engineers, without the title.
+          senior solutions engineer to solutions architect. As an architect I was also the tech lead of a team of 8
+          engineers, even though it wasn’t in my title.
         </p>
       </div>
       <div class="story-photos story-photos-pair">
@@ -87,9 +60,9 @@ const principles = [
     <section class="story">
       <div class="story-text prose">
         <p>
-          Hardware is a strict teacher. A bad deploy to a cloud service costs you an hour, but a bad deploy to a gateway
-          bolted inside an elevator shaft costs you a site visit. I learned a lot about vendors, over-the-air updates and
-          debugging a mess of wires at midnight.
+          Working with hardware changed how I think about deploys. A bad deploy to a cloud service costs you an hour.
+          A bad deploy to a gateway bolted inside a lift shaft costs you a site visit. I learned a lot there about
+          vendors, over-the-air updates, and debugging a mess of wires in the office at midnight.
         </p>
       </div>
       <div class="story-photos story-photos-pair">
@@ -101,10 +74,10 @@ const principles = [
     <section class="story story-flip">
       <div class="story-text prose">
         <p>
-          Since then I’ve built AWS platforms at Jillion, and today I’m a Senior DevOps/Infrastructure Engineer at
+          After that I built an AWS platform at Jillion. Today I’m a Senior DevOps/Infrastructure Engineer at
           <a href="https://www.multiverse.io">Multiverse</a> (I joined StackFuel, which Multiverse acquired in 2025),
-          running the Kubernetes platform behind hands-on courses for 10,000+ learners. The full history is on
-          <a href="/work/">my work page</a>.
+          where I run the Kubernetes platform behind hands-on courses for more than 10,000 learners. The full history
+          is on <a href="/work/">my work page</a>.
         </p>
       </div>
       <div class="story-photos story-photos-pair">
@@ -114,31 +87,41 @@ const principles = [
     </section>
 
     <h2 class="section-label">How I work</h2>
-    <ul class="principles">
-      {
-        principles.map((p) => (
-          <li>
-            <h3>{p.title}</h3>
-            <p>{p.text}</p>
-          </li>
-        ))
-      }
-    </ul>
+    <div class="narrow prose how-i-work">
+      <p>
+        When something breaks, I want evidence before opinions. I go layer by layer and write down what I’ve ruled out,
+        including my own wrong guesses, so nobody has to check the same thing twice.
+      </p>
+      <p>
+        I don’t consider a fix done until it’s in Terraform, Helm or Ansible. I’ve had a live patch quietly undone by
+        the next deploy, and once is enough. The same goes for backups: I only trust them once someone has restored from
+        one, so I write the runbook and then we run the drill.
+      </p>
+      <p>
+        I like docs that are short and explain why, not just what. And when AI agents work on our infrastructure, they
+        get the same treatment as any service account: their own identity, as little access as possible, and nothing
+        they read is trusted.
+      </p>
+      <p>
+        As a tech lead I hired people, ran 1:1s, planned with clients and handled incidents. Mostly, though, the job was
+        clearing the way so the team could ship.
+      </p>
+    </div>
 
     <div class="about-closing">
       <section>
         <h2 class="section-label">The work I enjoy most</h2>
         <p>
-          Reliability problems that cross layers, platforms that other teams depend on, and teams that care about writing
-          things down. I’m happiest somewhere between hands-on engineering and helping a team decide what to build next,
-          whether that’s as a lead or staff engineer or as an engineering manager who still reads the dashboards.
+          Reliability problems that cut across layers, platforms other teams depend on, and teams that write things
+          down. I’m happiest somewhere between hands-on engineering and helping a team decide what to build next, as a
+          lead or staff engineer, or as an engineering manager who still looks at the dashboards.
         </p>
       </section>
       <section>
         <h2 class="section-label">Languages</h2>
         <p>
-          I speak English natively and German at B1, improving slowly. I earned the AWS Solutions Architect – Associate
-          certification in 2018, though most of what I know came from production.
+          I speak English natively and German at B1, and it’s slowly getting better. I got the AWS Solutions Architect –
+          Associate certification in 2018, but most of what I know I learned in production.
         </p>
       </section>
       <section>

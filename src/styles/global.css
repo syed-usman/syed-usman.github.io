@@ -431,22 +431,10 @@ main {
   font-size: 1.5rem;
 }
 
-.case dl {
+.case-summary {
   margin: 0 0 1.25rem;
-}
-
-.case dt {
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.case dd {
-  margin: 0.15rem 0 0.9rem;
   color: var(--ink-2);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .case-link {
@@ -941,31 +929,8 @@ main {
   line-height: 1.4;
 }
 
-.principles {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.25rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.principles li {
-  padding: 1.4rem 1.5rem;
-  border: 1px solid var(--rule);
-  border-radius: 10px;
-  background: var(--surface);
-}
-
-.principles h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1.15rem;
-}
-
-.principles p {
-  margin: 0;
-  color: var(--ink-2);
-  line-height: 1.55;
+.how-i-work {
+  margin: 0 0 3rem;
 }
 
 .about-closing {
@@ -980,7 +945,6 @@ main {
 }
 
 @media (max-width: 60rem) {
-  .principles,
   .about-closing {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -996,7 +960,6 @@ main {
     order: 0;
   }
 
-  .principles,
   .about-closing {
     grid-template-columns: minmax(0, 1fr);
   }

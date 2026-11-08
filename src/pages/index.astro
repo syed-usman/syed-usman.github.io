@@ -9,48 +9,43 @@ const posts = await getPosts();
 
 const numbers = [
   { value: '10+', label: 'years building and running production infrastructure' },
-  { value: '10k+', label: 'learners on the Kubernetes platform I run today' },
-  { value: '30%+', label: 'lower infrastructure cost after moving that platform to autoscaling Kubernetes' },
-  { value: '900+', label: 'elevators monitored by an IoT product I helped take from zero to production' },
+  { value: '10k+', label: 'learners on the Kubernetes platform I look after now' },
+  { value: '30%+', label: 'cut in infrastructure cost when we moved that platform to autoscaling Kubernetes' },
+  { value: '900+', label: 'lifts monitored by Franz, an IoT product I helped build from scratch' },
 ];
 
 const cases = [
   {
     tag: 'Reliability',
     title: 'The 200-user wall',
-    problem:
-      'A load test stalled at ~170 of 200 users and 15–23% of logins failed, while every application log looked clean.',
-    work: 'Ten instrumented runs, one layer ruled out per run, until node autoscaling turned out to be reconfiguring the load balancer mid-test.',
-    result: '200/200 users, zero failures, fixed in Terraform and Helm so the next deploy can’t undo it.',
+    summary:
+      'A load test kept stalling at about 170 of 200 users, and every log looked fine. It took ten runs to find out that autoscaling was reconfiguring the load balancer in the middle of the test. Now all 200 get in.',
     href: '/2026-10-28/the-200-user-wall/',
-    cta: 'Read the write-up',
+    cta: 'Read the post',
   },
   {
     tag: 'Recovery',
     title: 'Backups someone has actually restored',
-    problem: 'User data lives on Kubernetes volumes, and a backup nobody has restored from is only a hope.',
-    work: 'Volume backups, a restore runbook from single file to full environment, and a script that works out the minimal restore chain.',
-    result: 'Timed recovery drills on the main databases, so “how long until it’s back?” has a measured answer.',
+    summary:
+      'We had backups, but nobody had ever restored from one. I wrote the runbook and a script that works out which backups you need, and then we timed a real restore of the main databases.',
     href: '/2026-10-29/a-backup-counts-once-restored/',
-    cta: 'Read the write-up',
+    cta: 'Read the post',
   },
   {
-    tag: 'AI guardrails',
-    title: 'Letting an AI agent near production, safely',
-    problem: 'We wanted Claude to investigate infrastructure issues on its own, without handing it a human’s keys.',
-    work: 'A dedicated least-privilege identity with short-lived credentials and audit logs, sandboxed runs, and default-deny tool access instead of an allow-list.',
-    result: 'An agent that investigates on its own without anyone’s keys, with every action attributable to it.',
+    tag: 'AI agents',
+    title: 'Letting Claude near our infrastructure',
+    summary:
+      'We wanted an AI agent to look into infrastructure problems without borrowing anyone’s access. So it got its own identity, short-lived credentials, a sandbox, and a hook that blocks anything we haven’t allowed.',
     href: '/2026-10-29/guardrails-for-ai-agents/',
-    cta: 'Read the write-up',
+    cta: 'Read the post',
   },
   {
     tag: 'IoT',
-    title: 'Franz: from zero to 900+ lifts',
-    problem: 'An elevator-monitoring product needed hardware, firmware, edge software and cloud, built by one team at once.',
-    work: 'Worked with a cross-functional team across frontend, backend, firmware and embedded Linux; built the edge layer and an over-the-air update system myself.',
-    result: 'A working MVP in under six months. The platform now monitors 900+ lifts in production.',
+    title: 'Franz, from nothing to 900+ lifts',
+    summary:
+      'A lift-monitoring product with its own hardware, firmware, edge software and cloud, built by one team at the same time. I built the edge software and the over-the-air updates. We had a working MVP in under six months.',
     href: '/work/#relayr-senior',
-    cta: 'More in my work',
+    cta: 'More on my work page',
   },
 ];
 ---
@@ -59,12 +54,12 @@ const cases = [
   <section class="wrap hero">
     <div class="hero-text">
       <p class="eyebrow">Syed Usman · Infrastructure &amp; DevOps engineer · Berlin</p>
-      <h1>I find out why production broke, fix it in code, and make sure it stays fixed.</h1>
+      <h1>Hi, I’m Syed. I build and run infrastructure in Berlin.</h1>
       <p class="lead">
-        For a decade I’ve built and run the platforms other engineers build on: from sensors in 900+ elevators to a
-        learning platform on Kubernetes for 10,000+ learners. Lately I also build the guardrails that let AI agents work
-        on real infrastructure without becoming the next incident. I write here about what broke, what I got wrong, and
-        what I’d do again.
+        I’ve spent about ten years on platforms that other engineers depend on. Right now that’s a Kubernetes platform
+        for more than 10,000 learners. Before that it was industrial IoT, including sensors in over 900 lifts. Lately
+        I’ve also been working out how to let AI agents near real infrastructure safely. I write here about things that
+        broke, and what I got wrong on the way to fixing them.
       </p>
       <p class="actions">
         <a class="button" href="/2026-10-28/the-200-user-wall/">Read “The 200-user wall”</a>
@@ -77,7 +72,7 @@ const cases = [
   </section>
 
   <section class="wrap" aria-labelledby="numbers">
-    <h2 id="numbers" class="section-label">By the numbers</h2>
+    <h2 id="numbers" class="section-label">A few numbers</h2>
     <ul class="numbers">
       {
         numbers.map((n) => (
@@ -98,14 +93,7 @@ const cases = [
           <article class="case">
             <p class="case-tag">{c.tag}</p>
             <h3>{c.title}</h3>
-            <dl>
-              <dt>Problem</dt>
-              <dd>{c.problem}</dd>
-              <dt>What I did</dt>
-              <dd>{c.work}</dd>
-              <dt>Result</dt>
-              <dd>{c.result}</dd>
-            </dl>
+            <p class="case-summary">{c.summary}</p>
             <a class="case-link" href={c.href}>
               {c.cta} <span aria-hidden="true">→</span>
             </a>
@@ -125,10 +113,10 @@ const cases = [
 
   <section class="wrap" aria-labelledby="hello">
     <div class="narrow cta">
-    <h2 id="hello">Building a platform team?</h2>
+    <h2 id="hello">Hiring for platform work?</h2>
     <p>
-      I like hard reliability problems, teams that write things down, and work where the fix ends up in code instead of
-      someone’s memory. If that sounds like your team, I’d like to hear what you’re working on.
+      If you’re building a platform or infrastructure team, I’d like to hear what you’re working on. Email is the best
+      way to reach me.
     </p>
     <p><a class="button" href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
     </div>
