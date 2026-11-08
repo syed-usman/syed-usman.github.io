@@ -2,7 +2,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 
 export const SITE = {
   title: 'Syed Usman',
-  tagline: 'Engineer in Berlin, building with AI',
+  tagline: 'A decade of hardware, cloud and Kubernetes. Now infrastructure built with AI, for the AI age.',
   description:
     'Syed Usman is an engineer in Berlin who does almost all of his DevOps and infrastructure work with AI. Ten years across software, IoT, solutions architecture and Kubernetes platforms.',
   author: 'Syed Usman',
