@@ -50,12 +50,13 @@ const roles: Role[] = [
     place: 'Berlin',
     note: 'I joined StackFuel, which Multiverse bought in 2025. I run the infrastructure behind hands-on data and coding courses.',
     items: [
-      'Got the learner platform to 200 users at once. Logins were failing under load because of a problem below the application, and I tracked it down one layer at a time and fixed it in code. In the final load test every user got in.',
+      'Got the learner platform to 200 users at once by tracking failing logins down to a problem below the application, then fixing it in code. In the final load test every user got in.',
       'Cut infrastructure cost by more than 30% by moving the lab and analytics platforms from hand-managed servers to autoscaling Kubernetes. It serves more than 10,000 learners.',
       'Set up backups, a restore runbook that covers everything from one file to a whole environment, and recovery drills we actually time.',
       'Gave an AI agent its own identity with as little access as possible, short-lived credentials, audit logs and sandboxed runs, so it can investigate infrastructure problems without anyone’s keys.',
       'Co-built a pipeline that takes a ticket to a merge request with Claude, with people approving at each gate. I designed how it limits which tools the agent can use.',
       'Keep the platform up to date with regular cluster upgrades, and identity, DNS, monitoring and dependency updates managed as code.',
+      'Do almost all of this work with AI agents, with skills for anything recurring, including skills that check my merge requests for the things my colleagues usually comment on. My tickets and story points per sprint have roughly quadrupled.',
     ],
   },
   {
@@ -67,7 +68,7 @@ const roles: Role[] = [
     note: 'I designed their AWS platform, from the environments and delivery pipelines to Kubernetes and observability.',
     items: [
       'Built staging and production on AWS entirely in Terraform, with environments and IAM permissions managed through GitOps.',
-      'Set up CI/CD for infrastructure, quality checks, tests and image builds, plus self-service jobs so developers could provision infrastructure, manage secrets and deploy on their own.',
+      'Set up CI/CD for infrastructure, tests and image builds, plus self-service jobs so developers could provision infrastructure, manage secrets and deploy on their own.',
       'Made EKS more resilient with GitOps deployments and scheduling and resource policies, so workloads degrade predictably when the cluster is under pressure.',
       'Added metrics, traces and logs with OpenTelemetry, and moved network access control into code.',
     ],
@@ -91,7 +92,7 @@ const roles: Role[] = [
     place: 'Berlin',
     note: 'relayr was Munich Re’s industrial IoT company in Berlin. We built sensors, gateways and cloud platforms for lifts, machines, buildings and ships.',
     items: [
-      'Tech lead of a team of 8 engineers across disciplines. I ran hiring and technical interviews, 1:1s and mentoring, sprint and roadmap planning, requirement workshops with clients, and incident response with postmortems and on-call.',
+      'Tech lead of a team of 8 engineers across disciplines: hiring and interviews, 1:1s and mentoring, sprint and roadmap planning, workshops with clients, and incidents and on-call.',
       'Led the move to Kubernetes and GitOps as the default across AWS and Azure for more than five client platforms, using Terraform and Atlantis so infrastructure changes got reviewed like code.',
       'Built platforms for industrial machines, smart buildings and ships, on-premise and on AWS and Azure. The ship monitoring helped cut a client’s vessel fuel costs by about 12%.',
     ],
@@ -111,7 +112,7 @@ const roles: Role[] = [
       { src: workshopTeam, alt: 'Syed with four teammates in front of a retrospective board and a video call screen; teammates\' faces blurred', caption: 'Team retro, 2020 (teammates blurred)', position: '36% center' },
     ],
     items: [
-      'Took Franz, a lift-monitoring product, from nothing to a working MVP in under six months, working with frontend, backend, firmware and embedded Linux engineers. I built the edge software (Python, MQTT, Buildroot) and the over-the-air update system for the devices. Franz now monitors more than 900 lifts.',
+      'Took Franz, a lift-monitoring product, from nothing to a working MVP in under six months with frontend, backend, firmware and embedded Linux engineers. I built the edge software (Python, MQTT, Buildroot) and the over-the-air updates. Franz now monitors more than 900 lifts.',
     ],
   },
   {
@@ -126,7 +127,7 @@ const roles: Role[] = [
       { src: liftShaft, alt: 'Looking down a lift shaft at a sensor mounted on the car', caption: 'Installing in a lift shaft, 2019' },
     ],
     items: [
-      'Built the backend for lift monitoring on AWS: microservices on Kubernetes, a gateway agent for real-time sensor data, infrastructure as code across environments, and alerting. I also set up CI for the services, embedded Linux builds and hardware stress tests, and worked with vendors to get gateways, sensors and firmware ready for production.',
+      'Built the backend for lift monitoring on AWS: microservices on Kubernetes, a gateway agent for real-time sensor data, and infrastructure as code. Set up CI for the services, embedded Linux builds and hardware stress tests, and helped vendors get gateways, sensors and firmware ready for production.',
     ],
   },
   {
@@ -148,9 +149,18 @@ const roles: Role[] = [
     dates: 'Aug 2015 – Jun 2017',
     place: 'Palo Alto & Lahore',
     items: [
-      'Worked on a pipeline that dug through AWS bills for waste, built on Kinesis, Lambda and Redshift, with TypeScript and Flask dashboards that flagged anomalies. I also handled Jenkins deployments and moved Postgres from on-premise to RDS.',
+      'Worked on a pipeline that dug through AWS bills for waste (Kinesis, Lambda, Redshift), with dashboards that flagged anomalies. Also ran Jenkins deployments and moved Postgres from on-premise to RDS.',
     ],
   },
+];
+
+const glance = [
+  { year: '2015', where: 'YotaScale', what: 'AWS cost analytics' },
+  { year: '2017', where: 'Colormass', what: '3D editor in the browser, first Kubernetes' },
+  { year: '2018', where: 'relayr (Munich Re)', what: 'Industrial IoT, then tech lead of 8' },
+  { year: '2023', where: 'Freelance', what: 'E-commerce infrastructure' },
+  { year: '2023', where: 'Jillion', what: 'AWS platform from scratch' },
+  { year: '2024', where: 'Multiverse', what: 'Kubernetes platform, built with AI agents' },
 ];
 
 const toolbox = [
@@ -174,10 +184,23 @@ const toolbox = [
       <p class="eyebrow">Work</p>
       <h1>Work</h1>
       <p class="lead">
-        About ten years, starting with AWS cost analytics in Palo Alto and Lahore, then IoT and learning platforms in
-        Berlin. If you’d like a PDF CV, email me at <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+        About a decade, starting with AWS cost analytics in Palo Alto and Lahore, then IoT and learning platforms in
+        Berlin. You can <a href="/syed-usman-cv.pdf">download my CV as a PDF</a>, or email me at
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
       </p>
     </header>
+
+    <ol class="glance" aria-label="Career at a glance">
+      {
+        glance.map((g) => (
+          <li>
+            <span class="glance-year">{g.year}</span>
+            <strong>{g.where}</strong>
+            <span>{g.what}</span>
+          </li>
+        ))
+      }
+    </ol>
 
     <ul class="strengths">
       {

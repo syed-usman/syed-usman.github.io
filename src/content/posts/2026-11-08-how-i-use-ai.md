@@ -10,7 +10,7 @@ That's probably the most honest summary of how I use it. I don't write long, car
 
 ## At work
 
-My day job is infrastructure: Kubernetes, Terraform, Helm, Ansible, CI. Over the past year about 99% of that work has gone through Claude. My part is deciding what we're doing, checking what comes back, and stopping it when it heads somewhere I didn't ask for.
+My day job is infrastructure: Kubernetes, Terraform, Helm, Ansible, CI. Over the past year about 99% of that work has gone through Claude, and my tickets and story points per sprint have roughly quadrupled. My part is deciding what we're doing, checking what comes back, and stopping it when it heads somewhere I didn't ask for.
 
 Anything I do on a regular basis becomes a skill. Some projects run on a harness, sometimes the [BMAD Method](https://github.com/bmad-code-org/BMAD-METHOD), more often a simple one we built and tuned for our team. Others don't need one. A few of the best skills we use came from [Matt Pocock](https://github.com/mattpocock/skills).
 

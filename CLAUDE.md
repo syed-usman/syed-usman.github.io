@@ -1,7 +1,8 @@
 # syed-usman.github.io
 
-Personal site and blog of Syed Usman (Syed Usman Kaleem), an infrastructure and
-DevOps engineer in Berlin. Built with [Astro](https://astro.build) 7 and
+Personal site and blog of Syed Usman (Syed Usman Kaleem), a Senior DevOps &
+Platform Engineer in Berlin who does almost all of his infrastructure work with
+AI agents. Built with [Astro](https://astro.build) 7 and
 deployed to GitHub Pages at <https://syed-usman.github.io/>.
 
 This file is the project's only documentation, for agents and humans alike.
@@ -44,9 +45,9 @@ to `main` publishes to the live site.** Only commit or push when asked.
 
 | Path | What it is |
 | --- | --- |
-| `src/site.ts` | Site name, tagline, email, nav, social links; post helpers (`getPosts`, `postUrl`, dates, reading time) |
-| `src/pages/index.astro` | Home page. Content is data at the top of the file (`numbers`, `cases`) |
-| `src/pages/work.astro` | Work page. Content is data at the top (`strengths`, `roles` with photos) |
+| `src/site.ts` | Site name, `tagline` (browser tab and search results), `headline` (the Home `<h1>`), job title, email, nav, social links; post helpers (`getPosts`, `postUrl`, dates, reading time) |
+| `src/pages/index.astro` | Home page: hero, "How I work now" (AI), `numbers`, `cases`, posts, and "Working together" (roles, work setup, facts, email and CV buttons) |
+| `src/pages/work.astro` | Work page. Content is data at the top (`glance` career strip, `strengths`, `roles` with photos, `toolbox`) |
 | `src/pages/about.astro` | About page: the story as HTML at the bottom of the file, with photos beside each section via `Figure` |
 | `src/pages/writing.astro` | List of all posts |
 | `src/pages/[...slug].astro` | Renders each post, with newer/older links |
@@ -60,15 +61,29 @@ to `main` publishes to the live site.** Only commit or push when asked.
 | `src/content.config.ts` | Post schema (`title`, `description?`, `date`, `draft`) |
 | `src/content/posts/` | Blog posts, see `src/content/posts/CLAUDE.md` |
 | `src/styles/global.css` | All styles, with light and dark mode via `prefers-color-scheme` |
-| `src/assets/` | Images processed by Astro: `display-picture.jpg` (portrait and OG image), `about/`, `work/` |
-| `public/` | Copied as-is: favicon, `robots.txt`, Google Search Console verification file |
+| `src/assets/` | Images processed by Astro: `display-picture.jpg` (portrait), `about/`, `work/` |
+| `scripts/og-card.mjs` | Builds `public/og-card.jpg`, the 1200×630 link-preview image. Re-run with `node scripts/og-card.mjs` after changing the portrait, title or headline |
+| `public/` | Copied as-is: favicon, `robots.txt`, Google Search Console verification file, `og-card.jpg`, `syed-usman-cv.pdf` |
 
 ## Things that aren't obvious from the code
 
-- **Keep facts in sync in three places.** Work history and numbers appear in
-  `src/pages/work.astro`, `src/pages/index.astro` and the hand-written profile
-  in `src/llms.ts` (plus `SITE.description` in `src/site.ts`). When one
-  changes, update the others.
+- **Keep facts in sync.** Work history and numbers appear in
+  `src/pages/work.astro`, `src/pages/index.astro`, the hand-written profile
+  in `src/llms.ts`, `SITE.description` in `src/site.ts`, the link-preview
+  card and the CV. When one changes, update the others.
+- **The CV** is built in Syed's separate `resume` repo
+  (`~/Documents/code/resume`, private): edit `cv/lead-infra-engineer.tex`,
+  run `make cv/lead-infra-engineer.pdf` there (add `-g` to `latexmk` if it
+  says up to date), then copy the PDF to `public/syed-usman-cv.pdf`.
+- **Positioning.** Title: "Senior DevOps & Platform Engineer". Open to staff,
+  lead and engineering manager roles, and freelance. Say it quietly ("always
+  happy to hear about…"), never "actively looking". Work setup is phrased
+  positively: "I work from my own office near Berlin, and I'm there in person
+  for onboarding, workshops and the moments that matter." Never say "no office
+  days". Location is "Berlin". Only claim AI work on infrastructure, not web
+  development or apps.
+- **No GitHub link.** Syed's GitHub profile is sparse, so the site doesn't
+  link to it.
 - **URLs keep the old Jekyll format.** `trailingSlash: 'always'` and
   `build.format: 'directory'` in `astro.config.mjs`, and posts at
   `/YYYY-MM-DD/slug/`. Changing either breaks existing links and search

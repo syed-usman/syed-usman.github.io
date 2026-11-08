@@ -459,6 +459,9 @@ main {
 }
 
 .case-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
   margin-top: auto;
   font-size: 0.85rem;
   font-weight: 500;
@@ -748,6 +751,48 @@ main {
 }
 
 /* Work page */
+
+.glance {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0;
+  margin: 0 0 3rem;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--rule);
+}
+
+.glance li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.9rem 1rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.glance-year {
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+
+.glance li span:last-child {
+  color: var(--ink-2);
+}
+
+@media (max-width: 60rem) {
+  .glance {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 1rem;
+  }
+}
+
+@media (max-width: 34rem) {
+  .glance {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
 .strengths {
   display: grid;
