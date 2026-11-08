@@ -38,3 +38,6 @@ validation-report.json
 
 # Folders to ignore
 node_modules
+
+# Private context for agents (repo is public)
+.context/

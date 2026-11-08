@@ -1,60 +1,27 @@
 ---
 title: "A backup counts once someone has restored from it"
-description: "Velero, Kopia, a restore runbook and a drill: what it takes to turn “we have backups” into a restore time you can say out loud, and how to run your first drill."
+description: "We had backups. What we didn’t have was a restore anyone had tried, or a time we could promise. This is what it took to fix that."
 date: 2026-10-29
 ---
 
-Every platform I've worked on has had backups. Far fewer have had restores. The difference only shows up on the worst day, when someone asks "how long until it's back?" and nobody knows.
+Every platform I've worked on had backups. Far fewer had ever had a restore. You don't notice the difference until the bad day, when someone asks how long until it's back and nobody can answer.
 
-This post is about how we closed that gap on a Kubernetes platform, and how you can find out where you stand on yours.
+On our platform, user data lives on Kubernetes volumes. Setting up the backups was the easy bit. We use Velero with Kopia: Velero understands Kubernetes objects and volumes, and Kopia makes deduplicated, file-level copies. We keep them for months, so even a problem nobody spots for a few weeks can still be recovered. It's all in code with the rest of the platform. None of this is special.
 
-## What was at stake
+## The part nobody writes down
 
-On this platform, the data that matters lives on Kubernetes **persistent volumes**: disks that outlive the pods using them. Users' files live on them, and so do the databases the platform runs on. If a volume is lost or corrupted, that's someone's work gone, or the whole platform down.
+The hard part is the restore, and it comes with questions the backup tool doesn't answer for you.
 
-Two numbers describe how well you're protected, and they're worth knowing by name:
+The first is which backups you actually need. Every volume is backed up on its own schedule, so getting back to one point in time means picking the right backup for each volume. That's arithmetic you don't want to do in the middle of an incident, so I wrote a small script that works out the minimal restore chain.
 
-- **Recovery point objective (RPO):** how much data you can afford to lose, measured in time. Nightly backups mean you can lose up to a day.
-- **Recovery time objective (RTO):** how long you can afford to be down while you restore.
+The second is size. Most restore requests aren't "the cluster is gone". They're "I deleted a file". So the runbook starts at a single file and goes all the way up to a full environment.
 
-Most teams can tell you their RPO, because it's just the backup schedule. Very few can tell you their RTO, because the only way to know it is to restore something and time it.
-
-## What we back up, and how
-
-- **[Velero](https://velero.io) with [Kopia](https://kopia.io)** for volume backups. Velero understands Kubernetes: it knows which volumes belong to which workloads and can put them back. Kopia does the actual copying, deduplicated, so unchanged files aren't stored twice.
-- **Retention measured in months, not days**, so a problem nobody notices for a few weeks is still recoverable. Silent corruption is usually noticed late.
-- **Everything defined in code** alongside the rest of the platform, not clicked together once and forgotten.
-
-None of this is unusual. That's the point: the backup half is the easy half.
-
-## The restore half
-
-A restore raises questions the backup tool can't answer for you:
-
-- **Which backups do I need?** Many volumes are backed up on their own schedules. Getting the platform back to one point in time means picking the right backup for each volume, so the database and the files it points to match. I wrote a small script that works out that set across volumes, so nobody has to do the arithmetic during an incident.
-- **What's the smallest thing I can restore?** Most requests aren't "the cluster is gone". They're "someone lost a file". The runbook covers every size, from a single file to a full environment.
-- **Who can run it?** If only the person who set up backups can restore them, you have a single point of failure with a holiday calendar. So the runbook is written for someone who has never done it.
+The third is who can do it. If only the person who set up the backups can restore them, that's a single point of failure with a holiday calendar. I wrote the runbook for someone who has never done a restore before.
 
 ## The drill
 
-Then we did it for real on the main databases: restore from backup, check the data is complete and usable, and time it end to end.
+Then we did it for real on the main databases: restore from backup, check the data, and time the whole thing.
 
-The answer was **hours, not days**, depending on what's being restored. The exact range is now written in the runbook. Next time someone asks how long until it's back, there's an honest answer instead of a guess.
+The answer was hours, not days, depending on what you're restoring. The exact numbers are in the runbook now, so the next time someone asks how long until it's back, there's an honest answer.
 
-## What this means for you
-
-You can find out where you stand this week. Answer these honestly:
-
-1. **When did anyone last restore from your backups?** Not "check the backup job is green": actually put the data back. If the answer is never, your restore time is unknown.
-2. **Could someone who didn't set up the backups restore them**, using only what's written down?
-3. **Do you know which backups make up one consistent restore point** across your database and the files or volumes that go with it?
-
-If any answer is "no" or "not sure", run a small drill:
-
-- **Pick one real volume or database** that matters, not a toy one.
-- **Restore it somewhere harmless**: a scratch namespace or a separate database instance, never on top of production.
-- **Check the data, not just the exit code.** Open the files and query the tables. A restore that "succeeded" onto an empty disk is still a failure.
-- **Time it from "we've decided to restore" to "users can work again"**, and write that number down. That's your real recovery time.
-- **Fix the first thing that went wrong** in the runbook, and run the drill again after any big migration. A restore that worked before the last migration is a guess now.
-
-The backup job going green tells you data was copied. Only a restore tells you it's usable, and how long it takes to get back.
+A green backup job only tells you that data got copied somewhere. You only find out whether it's usable when you restore it, and how long that takes is the number people actually care about. I'd run the drill again after any big change, like a migration. A restore that worked before it is just a guess afterwards.
