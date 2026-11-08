@@ -431,14 +431,6 @@ main {
   font-size: 1.5rem;
 }
 
-.hero-tagline {
-  margin: 0 0 1rem;
-  color: var(--accent);
-  font-size: 1.05rem;
-  font-weight: 500;
-  line-height: 1.45;
-}
-
 .home-ai {
   margin-bottom: 3rem;
 }
