@@ -12,7 +12,7 @@ export const SITE = {
   email: 'syedusmankaleem@live.com',
   locale: 'en',
   /** GoatCounter site code (https://<code>.goatcounter.com). Empty = no analytics script. */
-  goatcounter: '',
+  goatcounter: 'syedusman',
 };
 
 export const NAV = [
