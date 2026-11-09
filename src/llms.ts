@@ -4,7 +4,7 @@ import { SITE, SOCIAL, formatDate, getPosts, postUrl } from './site';
 // Keep in sync with the Work and About pages.
 const profile = `# ${SITE.author}
 
-> ${SITE.author} (${SITE.alternateName}) is an engineer in Berlin, Germany. Over the past year he has done about 99% of his work with AI, roughly quadrupling his tickets and story points per sprint (Claude Code, with skills and a team harness), building and running DevOps and infrastructure. Before that, ten years across backend and frontend development, industrial IoT, solutions architecture and team leadership, and Kubernetes platforms.
+> ${SITE.author} (${SITE.alternateName}) is an engineering leader and platform engineer in Berlin, Germany. He is always happy to hear about engineering manager, staff, principal and lead roles. He was tech lead of eight engineers for two years. Over the past year he has done about 99% of his infrastructure work with AI agents (Claude Code, with skills and a team harness) and designs the guardrails around them. Before that, ten years across backend and frontend development, industrial IoT, solutions architecture and team leadership, and Kubernetes platforms.
 
 - Location: Berlin, Germany
 - Email: ${SITE.email}

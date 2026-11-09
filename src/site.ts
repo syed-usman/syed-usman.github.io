@@ -2,10 +2,10 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 
 export const SITE = {
   title: 'Syed Usman',
-  tagline: 'Senior DevOps & Platform Engineer in Berlin',
-  headline: 'A decade of hardware, cloud and Kubernetes. Now I build infrastructure with AI agents, and the guardrails around them.',
+  tagline: 'Engineering leader and platform engineer in Berlin',
+  headline: 'I’ve led engineering teams and built the platforms they run on. Now I run infrastructure with AI agents, and design the guardrails that keep them safe.',
   description:
-    'Syed Usman is an engineer in Berlin who does almost all of his DevOps and infrastructure work with AI. Ten years across software, IoT, solutions architecture and Kubernetes platforms.',
+    'Syed Usman is an engineering leader and platform engineer in Berlin: two years as tech lead of eight engineers, ten years across software, IoT and Kubernetes platforms, and now infrastructure run almost entirely with AI agents.',
   author: 'Syed Usman',
   alternateName: 'Syed Usman Kaleem',
   jobTitle: 'Senior DevOps & Platform Engineer',

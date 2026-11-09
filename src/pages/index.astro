@@ -8,13 +8,21 @@ import { SITE, getPosts } from '../site';
 const posts = await getPosts();
 
 const numbers = [
-  { value: '4×', label: 'the tickets and story points per sprint, on average, since I started working with AI' },
-  { value: '10 yrs', label: 'across software, IoT, solutions architecture and infrastructure' },
+  { value: '8', label: 'engineers I led as tech lead: hiring, 1:1s, roadmap and on-call' },
+  { value: '5+', label: 'client platforms I moved to Kubernetes and GitOps as the default' },
+  { value: '30%+', label: 'lower infrastructure cost after moving to autoscaling Kubernetes' },
   { value: '10k+', label: 'learners on the Kubernetes platform I look after now' },
-  { value: '900+', label: 'lifts monitored by Franz, an IoT product I helped build from scratch' },
 ];
 
 const cases = [
+  {
+    tag: 'Leadership',
+    title: 'Leading a team of eight through a platform shift',
+    summary:
+      'As tech lead of eight engineers I hired, ran 1:1s and planned the roadmap with clients, while we moved more than five client platforms to Kubernetes and GitOps, with infrastructure changes reviewed like code.',
+    href: '/work/#relayr',
+    cta: 'More on my work page',
+  },
   {
     tag: 'AI agents',
     title: 'How we let an AI agent work on our infrastructure safely',
@@ -39,27 +47,20 @@ const cases = [
     href: '/2026-10-29/a-backup-counts-once-restored/',
     cta: 'Read the post',
   },
-  {
-    tag: 'IoT',
-    title: 'Building a lift-monitoring product from scratch',
-    summary:
-      'A lift-monitoring product with its own hardware, firmware, edge software and cloud, built by one team at the same time. I built the edge software and the over-the-air updates. We had a working MVP in under six months.',
-    href: '/work/#relayr-senior',
-    cta: 'More on my work page',
-  },
 ];
 ---
 
 <Base>
   <section class="wrap hero">
     <div class="hero-text">
-      <p class="eyebrow">Syed Usman · Senior DevOps &amp; Platform Engineer · Berlin</p>
+      <p class="eyebrow">Syed Usman · Engineering leader &amp; platform engineer · Berlin</p>
       <h1>{SITE.headline}</h1>
       <p class="lead">
-        Hi, I’m Syed. I build and run infrastructure: Kubernetes, Terraform, CI and the platforms around them. For
-        the past year, about 99% of that work has gone through Claude Code, and I get through about four times as
-        much as I used to. Before that I spent a decade doing it by hand: backend and frontend code, IoT products with
-        their own hardware, solutions architecture and leading a team, and the platforms other engineers build on.
+        Hi, I’m Syed. I spent two years as tech lead of eight engineers, and a decade building what teams run on:
+        IoT products with their own hardware, client platforms on AWS and Azure, and the Kubernetes platform I look
+        after now. For the past year almost all of my infrastructure work has gone through AI agents, and the part I
+        care about most is the system around them: what they may touch, how their work gets reviewed, and how a team
+        adopts them safely.
       </p>
       <p class="actions">
         <a class="button" href="/2026-11-08/how-i-use-ai/">How I work with AI</a>
@@ -136,15 +137,13 @@ const cases = [
     <div class="narrow cta">
     <h2 id="hello">Working together</h2>
     <p>
-      I’m always happy to hear about staff and lead engineering roles, engineering management, and freelance DevOps
-      and platform projects. I work from my own office near Berlin, and I’m there in person for onboarding, workshops
+      I’m always happy to hear about engineering management, staff, principal and lead engineering roles. I work from my own office near Berlin, and I’m there in person for onboarding, workshops
       and the moments that matter.
     </p>
     <ul class="facts">
       <li>Based in Berlin</li>
       <li>No visa sponsorship needed</li>
       <li>English (native), German (B1)</li>
-      <li>Available for freelance projects</li>
     </ul>
     <p class="actions">
       <a class="button" href={`mailto:${SITE.email}`}>{SITE.email}</a>
